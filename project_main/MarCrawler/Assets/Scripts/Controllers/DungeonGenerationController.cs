@@ -22,9 +22,15 @@ public class DungeonGenerationController {
 		}
 
 		//crea percorsi \\TODO
+		List<Treasure> treasures = new List<Treasure>();
 
 		//inserisci tesori \\TODO
-		List<Treasure> treasures = new List<Treasure>();
+
+		foreach(DungeonRoom room in rooms){
+			foreach(Treasure treasure in room.treasures){
+				treasures.Add(TreasureInitializer.initializeTreasure(treasure, rand.Next));
+			}
+		}
 
 		//LATER_PATCH: inserisci trappole
 
