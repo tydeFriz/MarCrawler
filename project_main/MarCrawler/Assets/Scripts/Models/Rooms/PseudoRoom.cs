@@ -5,7 +5,7 @@ public class PseudoRoom{
 	public int sizeX;
 	public int sizeY;
 
-	public PseudoRoom(int px,int py,int sx,int sy){
+	public PseudoRoom(int px, int py, int sx, int sy){
 		this.posX = px;
 		this.posY = py;
 		this.sizeX = sx;

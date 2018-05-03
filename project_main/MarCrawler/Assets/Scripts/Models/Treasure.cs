@@ -9,6 +9,7 @@ public class Treasure{
 	int gold;
 
 	public Treasure(int x, int y, List<Item> items, int gold){
+		this.opened = false;
 		this.posX = x;
 		this.posY = y;
 		this.items = items;
