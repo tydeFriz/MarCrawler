@@ -2,16 +2,15 @@
 
 public class Treasure{
 
-	int posX;
-	int posY;
-	bool opened;
-	List<Item> items;
-	int gold;
+	public Coordinates position;
+	public bool opened;
+	public List<Item> items;
+	public int gold;
 
-	public Treasure(int x, int y, List<Item> items, int gold){
+	public Treasure(Coordinates position, List<Item> items, int gold){
 		this.opened = false;
-		this.posX = x;
-		this.posY = y;
+		this.position.x = position.x;
+		this.position.y = position.y;
 		this.items = items;
 		this.gold = gold;
 	}

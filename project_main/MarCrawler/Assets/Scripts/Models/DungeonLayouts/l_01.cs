@@ -36,14 +36,14 @@ public class l_01 : DungeonLayout{
 		};
 
 		rooms = new List<PseudoRoom> {
-			new PseudoRoom(0, 2, 7, 7),
-			new PseudoRoom(1, 13, 5, 5),
-			new PseudoRoom(8, 2, 11, 7),
-			new PseudoRoom(14, 13, 3, 5),
-			new PseudoRoom(5, 20, 9, 3),
-			new PseudoRoom(22, 2, 3, 3),
-			new PseudoRoom(22, 12, 3, 3),
-			new PseudoRoom(21, 21, 4, 4),
+			new PseudoRoom(new Coordinates(0, 2), 7, 7),
+			new PseudoRoom(new Coordinates(1, 13), 5, 5),
+			new PseudoRoom(new Coordinates(8, 2), 11, 7),
+			new PseudoRoom(new Coordinates(14, 13), 3, 5),
+			new PseudoRoom(new Coordinates(5, 20), 9, 3),
+			new PseudoRoom(new Coordinates(22, 2), 3, 3),
+			new PseudoRoom(new Coordinates(22, 12), 3, 3),
+			new PseudoRoom(new Coordinates(21, 21), 4, 4),
 		};
 	}
 
