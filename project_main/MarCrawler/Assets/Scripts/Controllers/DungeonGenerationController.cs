@@ -28,7 +28,7 @@ public class DungeonGenerationController {
 
 		foreach(DungeonRoom room in rooms){
 			foreach(Treasure treasure in room.treasures){
-				treasures.Add(TreasureInitializer.initializeTreasure(treasure, rand.Next));
+				treasures.Add(TreasureInitializer.initializeTreasure(treasure, rand.Next()));
 			}
 		}
 
