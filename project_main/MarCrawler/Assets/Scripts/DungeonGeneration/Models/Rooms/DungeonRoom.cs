@@ -2,9 +2,7 @@
 
 public abstract class DungeonRoom {
 
-	public int sizeX;
-	public int sizeY;
-	public char[,] grid;
+	public DungeonGrid grid;
 	public List<Treasure> treasures;
 	public string modelFileName;
 	//LATER_PATCH - maybe: list of "notables" 

@@ -4,9 +4,8 @@ using System.Collections.Generic;
 public class l_01 : DungeonLayout{
 	
 	public l_01(){
-		sizeX = 25;
-		sizeY = 25;
-		grid = new char[25, 25]{
+
+		char[,] defGrid = new char[25, 25]{
 			//                    4                        9                       14                       19                       24
 			{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'E', 'x', 'x', 'x', 'x', 'x', 'x', '.', '.', '.', '.', '.'},
 			{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'D', 'x', 'x', 'x', 'x', 'D', 'x', 'x', 'x', 'x', 'D', 'x', '.', 'x', 'x', 'D', 'x'},
@@ -34,6 +33,7 @@ public class l_01 : DungeonLayout{
 			{'.', '.', '.', '.', 'x', 'x', 'x', 'x', 'x', 'D', 'x', 'x', 'x', 'x', 'x', '.', '.', '.', '.', '.', 'x', ' ', ' ', ' ', ' '},
 			{'.', '.', '.', '.', '.', 'x', 'x', 'x', 'x', 'I', 'x', 'x', 'x', 'x', 'x', '.', '.', '.', '.', '.', 'D', ' ', ' ', ' ', ' '}  // 24
 		};
+		grid = new DungeonGrid(25, 25, defGrid);
 
 		rooms = new List<PseudoRoom> {
 			new PseudoRoom(new Coordinates(0, 2), 7, 7),
