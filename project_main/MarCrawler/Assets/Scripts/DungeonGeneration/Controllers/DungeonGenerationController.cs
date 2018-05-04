@@ -27,7 +27,6 @@ public class DungeonGenerationController {
 			double rateo = (layout.grid.countArea(area) / layout.grid.countPerimeter(area))*100;
 			rateo = 5000 + 50*rateo;
 			shufflePaths(layout.grid, area, rateo, rand);
-			//TODO: make sure all doors touching the 
 			List<List<Coordinates>> tempPaths = layout.grid.findAreas('_');
 			//TODO: link all paths using DungeonGrid.drawPath(...)
 			// define areas' realtive distances
@@ -58,8 +57,12 @@ public class DungeonGenerationController {
 
 	private void shufflePaths(DungeonGrid grid, List<Coordinates> area, double rateo, Random rand){
 		foreach(Coordinates position in area){
-			int rnd = (rand.Next() % 10000) + 1;
-			grid.grid[position.x, position.y] = rnd > rateo ? '_' : 'w';
+			if(grid.hasDoorsTouching(position)) grid.grid[position.x, position.y] = '_';
+			else{
+				int rnd = (rand.Next() % 10000) + 1;
+				grid.grid[position.x, position.y] = rnd > rateo ? '_' : 'w';
+			}
+
 		}
 	}
 }

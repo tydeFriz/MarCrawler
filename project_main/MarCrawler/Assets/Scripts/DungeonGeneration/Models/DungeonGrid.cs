@@ -65,7 +65,7 @@ public class DungeonGrid{
 			if(point.x > 0 && grid[point.x-1, point.y] != 'A') count++;
 			if(point.x < sizeX && grid[point.x+1, point.y] != 'A') count++;
 			if(point.y > 0 && grid[point.x, point.y-1] != 'A') count++;
-			if(point.x < sizeY && grid[point.x, point.y+1] != 'A') count++;
+			if(point.y < sizeY && grid[point.x, point.y+1] != 'A') count++;
 		}
 		foreach(Coordinates point in area){
 			grid [point.x - 1, point.y] = previousMarker;
@@ -100,6 +100,14 @@ public class DungeonGrid{
 		}
 
 		return grid;
+	}
+
+	public bool hasDoorsTouching(Coordinates position){
+		if(position.x > 0 && grid[position.x-1, position.y] == 'D') return true;
+		if(position.x < sizeX && grid[position.x+1, position.y] == 'D') return true;
+		if(position.y > 0 && grid[position.x, position.y-1] == 'D') return true;
+		if(position.y < sizeY && grid[position.x, position.y+1] == 'D') return true;
+		return false;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
