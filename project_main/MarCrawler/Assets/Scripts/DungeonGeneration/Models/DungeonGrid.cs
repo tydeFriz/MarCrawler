@@ -11,7 +11,7 @@ public class DungeonGrid{
 		this.grid = new char[x, y];
 		for(int i = 0; i < x; i++){
 			for(int j = 0; j < y; j++){
-				this.grid[i, j] = '.';
+				this.grid[i, j] = Constants.PATHABLE_MARKER;
 			}
 		}
 	}
@@ -59,13 +59,13 @@ public class DungeonGrid{
 		int count = 0;
 		char previousMarker = grid[area[0].x, area[0].y];
 		foreach(Coordinates point in area){
-			grid [point.x - 1, point.y] = 'A';
+			grid [point.x - 1, point.y] = Constants.AREA_MARKER;
 		}
 		foreach(Coordinates point in area){
-			if(point.x > 0 && grid[point.x-1, point.y] != 'A') count++;
-			if(point.x < sizeX && grid[point.x+1, point.y] != 'A') count++;
-			if(point.y > 0 && grid[point.x, point.y-1] != 'A') count++;
-			if(point.y < sizeY && grid[point.x, point.y+1] != 'A') count++;
+			if(point.x > 0 && grid[point.x-1, point.y] != Constants.AREA_MARKER) count++;
+			if(point.x < sizeX && grid[point.x+1, point.y] != Constants.AREA_MARKER) count++;
+			if(point.y > 0 && grid[point.x, point.y-1] != Constants.AREA_MARKER) count++;
+			if(point.y < sizeY && grid[point.x, point.y+1] != Constants.AREA_MARKER) count++;
 		}
 		foreach(Coordinates point in area){
 			grid [point.x - 1, point.y] = previousMarker;
@@ -92,7 +92,7 @@ public class DungeonGrid{
 		while(!actualPosition.Equals(end)){
 			try{
 				Coordinates newPosition = findNextStep(actualPosition, end, rnd);
-				grid[newPosition.x, newPosition.y] = '_';
+				grid[newPosition.x, newPosition.y] = Constants.PATH_MARKER;
 				actualPosition.setByCopy(newPosition);
 			}catch(CannotFindPathException e){
 				return grid;
@@ -103,10 +103,10 @@ public class DungeonGrid{
 	}
 
 	public bool hasDoorsTouching(Coordinates position){
-		if(position.x > 0 && grid[position.x-1, position.y] == 'D') return true;
-		if(position.x < sizeX && grid[position.x+1, position.y] == 'D') return true;
-		if(position.y > 0 && grid[position.x, position.y-1] == 'D') return true;
-		if(position.y < sizeY && grid[position.x, position.y+1] == 'D') return true;
+		if(position.x > 0 && grid[position.x-1, position.y] == Constants.DOOR_MARKER) return true;
+		if(position.x < sizeX && grid[position.x+1, position.y] == Constants.DOOR_MARKER) return true;
+		if(position.y > 0 && grid[position.x, position.y-1] == Constants.DOOR_MARKER) return true;
+		if(position.y < sizeY && grid[position.x, position.y+1] == Constants.DOOR_MARKER) return true;
 		return false;
 	}
 
@@ -127,14 +127,14 @@ public class DungeonGrid{
 	}
 		
 	/// <summary>
-	/// NEVER call this method using 'F' as a marker
+	/// NEVER call this method using Constants.TEMP_EXPLORE_MARKER ('F') as a marker
 	/// </summary>
 	private void recursiveExploration(char marker, Coordinates point, List<Coordinates> points){
-		if (marker == 'F')
+		if (marker == Constants.TEMP_EXPLORE_MARKER)
 			throw new ShittyBlindProgrammerException ("the guy who called this function can't even read function descriptions");
 		if(grid[point.x, point.y] != marker) return;
 		points.Add(point);
-		grid[point.x, point.y] = 'F';
+		grid[point.x, point.y] = Constants.TEMP_EXPLORE_MARKER;
 		if(point.x > 0) recursiveExploration(marker, new Coordinates(point.x-1, point.y), points);
 		if(point.x < sizeX) recursiveExploration(marker, new Coordinates(point.x+1, point.y), points);
 		if(point.y > 0) recursiveExploration(marker, new Coordinates(point.x, point.y-1), points);
@@ -158,35 +158,51 @@ public class DungeonGrid{
 
 			if (distanceX < distanceY) {
 				if (random > 74)
-					return stepY (start, end, directionY);
+					return chooseStep (start, end, Constants.STEP_Y, directionX, directionY);
 				else
-					return stepX (start, end, directionX);
+					return chooseStep (start, end, Constants.STEP_X, directionX, directionY);
 			}
 			else if (distanceX > distanceY) {
 				if (random > 74)
-					return stepX (start, end, directionX);
+					return chooseStep (start, end, Constants.STEP_X, directionX, directionY);
 				else
-					return stepY (start, end, directionY);
+					return chooseStep (start, end, Constants.STEP_Y, directionX, directionY);
 			}
 			else {
 				if (random > 49)
-					return stepX (start, end, directionX);
+					return chooseStep (start, end, Constants.STEP_X, directionX, directionY);
 				else
-					return stepY (start, end, directionY);
+					return chooseStep (start, end, Constants.STEP_Y, directionX, directionY);
 			}
 
 		}
 	}
 
-	private Coordinates stepX(Coordinates start, Coordinates end, int direction){
-		if(grid[start.x + direction, start.y] != '.') 
+	private Coordinates chooseStep(Coordinates start, Coordinates end, bool baseStep, int directionX, int directionY){
+		bool canGoX = grid [start.x + directionX, start.y] != Constants.PATHABLE_MARKER;
+		bool canGoY = grid [start.x, start.y + directionY] != Constants.PATHABLE_MARKER;
+		if(!canGoX && !canGoY)
 			throw new CannotFindPathException();
+		int decide = (baseStep == Constants.STEP_X ? 1 : 2)*100 + (canGoX ? 1 : 0)*10 + (canGoY ? 1 : 0);
+		switch (decide) {
+		case 110:
+		case 111:
+		case 210:
+			return stepX (start, end, directionX);
+		case 201:
+		case 211:
+		case 101:
+			return stepY (start, end, directionY);
+		}
+
+		throw new CannotFindPathException();
+	}
+
+	private Coordinates stepX(Coordinates start, Coordinates end, int direction){
 		return new Coordinates(start.x + direction, start.y);
 	}
 
 	private Coordinates stepY(Coordinates start, Coordinates end, int direction){
-		if(grid[start.x, start.y + direction] != '.') 
-			throw new CannotFindPathException();
 		return new Coordinates(start.x, start.y + direction);
 	}
 

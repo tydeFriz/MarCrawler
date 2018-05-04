@@ -8,14 +8,14 @@ public static class Constants{
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
-	public const int LAYOUTS_COUNT = 1;
-
 	public const int ROOM_NUMBER_MAX_CARDINALITY = 10;
 	public const int ROOM_SIZE_X_MAX_CARDINALITY = 100;
 	public const int ROOM_SIZE_Y_MAX_CARDINALITY = 100;
 
-	public const int ROOM_3x3_COUNT = 1;
-	public const int ROOM_3x5_COUNT = 0;
+	public const int LAYOUTS_COUNT = 1;
+
+	public const int ROOM_3x3_COUNT = 2;
+	public const int ROOM_3x5_COUNT = 1;
 	public const int ROOM_3x7_COUNT = 0;
 	public const int ROOM_3x9_COUNT = 0;
 	public const int ROOM_5x5_COUNT = 0;
@@ -28,5 +28,16 @@ public static class Constants{
 	public const int ROOM_9x9_COUNT = 0;
 	public const int ROOM_9x11_COUNT = 0;
 
+	public const char AREA_MARKER = 'A';
+	public const char PSEUDO_ROOM_MARKER = ' ';
+	public const char WALL_MARKER = 'w';
+	public const char DOOR_MARKER = 'D';
+	public const char SECRET_DOOR_MARKER = 'S';
+	public const char TREASURE_MARKER = 'T';
+	public const char PATHABLE_MARKER = '.';
+	public const char PATH_MARKER = '_';
+	public const char TEMP_EXPLORE_MARKER = 'F';
 
+	public const bool STEP_X = true;
+	public const bool STEP_Y = false;
 }

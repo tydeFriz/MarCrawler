@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// stores a single position in a 2-dimensional array
+/// </summary>
 public class Coordinates{
 	public int x;
 	public int y;
