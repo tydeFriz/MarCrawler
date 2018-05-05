@@ -11,17 +11,17 @@ public class r_3x5_001 : DungeonRoom{
 				{ ' ', ' ', ' ', ' ', ' ' },
 				{ ' ', ' ', ' ', ' ', ' ' }
 			};
-			grid = new DungeonGrid(3, 3, defGrid);
+			grid = new DungeonGrid(3, 5, defGrid);
 		} 
 		else {
 			defGrid = new char[5, 3] {
-				{ 'w', ' ', ' ' },
+				{ ' ', ' ', 'w' },
 				{ ' ', ' ', ' ' },
 				{ ' ', ' ', ' ' },
 				{ ' ', ' ', ' ' },
-				{ 'w', ' ', ' ' }
+				{ ' ', ' ', 'w' }
 			};
-			grid = new DungeonGrid(3, 3, defGrid);
+			grid = new DungeonGrid(5, 3, defGrid);
 		}
 
 		modelFileName = "TEMP_SHITTY_NAME_REMOVE_ME_BITCH";

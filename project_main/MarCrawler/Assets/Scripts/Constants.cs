@@ -1,6 +1,13 @@
-﻿
+﻿public static class Constants{
 
-public static class Constants{
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 									   LOGS										*/
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
+	public const string DUNGEON_GENERATION_MESSAGE = "Dungeon_Generation";
+
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
@@ -18,7 +25,7 @@ public static class Constants{
 	public const int ROOM_3x5_COUNT = 1;
 	public const int ROOM_3x7_COUNT = 0;
 	public const int ROOM_3x9_COUNT = 0;
-	public const int ROOM_5x5_COUNT = 0;
+	public const int ROOM_5x5_COUNT = 1;
 	public const int ROOM_5x7_COUNT = 0;
 	public const int ROOM_5x9_COUNT = 0;
 	public const int ROOM_5x11_COUNT = 0;

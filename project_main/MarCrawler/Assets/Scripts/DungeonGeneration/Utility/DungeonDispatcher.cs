@@ -30,7 +30,7 @@ public static class DungeonDispatcher{
 			return getDungeonRoomById ((rand % Constants.ROOM_3x5_COUNT)+1, 3, 5, rotate);
 		case(3*Constants.ROOM_SIZE_X_MAX_CARDINALITY)
 			+7:
-			return getDungeonRoomById ((rand % Constants.ROOM_3x7_COUNT)+1, 3, 7, rotate);
+			return getDungeonRoomById ((rand % Constants.ROOM_3x7_COUNT) + 1, 3, 7, rotate);
 		case(3*Constants.ROOM_SIZE_X_MAX_CARDINALITY)
 			+9:
 			return getDungeonRoomById ((rand % Constants.ROOM_3x9_COUNT)+1, 3, 9, rotate);
@@ -73,6 +73,11 @@ public static class DungeonDispatcher{
 	//////////////////////////////////////////////////////////////////////////////////
 
 	private static DungeonRoom getDungeonRoomById(int id, int sizeX, int sizeY, bool rotate){
+
+		id = (sizeX * Constants.ROOM_SIZE_X_MAX_CARDINALITY * Constants.ROOM_SIZE_Y_MAX_CARDINALITY * Constants.ROOM_NUMBER_MAX_CARDINALITY) +
+			(sizeY * Constants.ROOM_SIZE_Y_MAX_CARDINALITY * Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+id;
+
 		DungeonRoom picked = null;
 		switch (id) {
 		/* 
@@ -85,6 +90,21 @@ public static class DungeonDispatcher{
 			(3*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
 			+1:
 			picked = new r_3x3_001(rotate);
+			break;
+		case(3*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(3*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+2:
+			picked = new r_3x3_002(rotate);
+			break;
+		case(3*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(5*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_3x5_001(rotate);
+			break;
+		case(5*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(5*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_5x5_001(rotate);
 			break;
 		default:
 			throw new DungeonRoomNotAvailableException();

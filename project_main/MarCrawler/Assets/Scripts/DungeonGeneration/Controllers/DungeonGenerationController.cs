@@ -14,37 +14,41 @@ public class DungeonGenerationController {
 
 		//scegli stanze
 		List<DungeonRoom> rooms = new List<DungeonRoom>();
-		foreach(PseudoRoom room in layout.rooms){
+		foreach (PseudoRoom room in layout.rooms) {
 			DungeonRoom pickedRoom = DungeonDispatcher.getDungeonRoomByType (room.sizeX, room.sizeY, rand.Next());
 			layout.grid.paste(pickedRoom.grid, room.position);
 			rooms.Add(pickedRoom);
 		}
 
-		List<Treasure> treasures = new List<Treasure>();
 		//crea percorsi
-		List<List<Coordinates>> pathableAreas = layout.grid.findAreas(Constants.PATHABLE_MARKER);
-		foreach (List<Coordinates> area in pathableAreas) {
-			double rateo = (layout.grid.countArea(area) / layout.grid.countPerimeter(area))*100;
-			rateo = 5000 + 50*rateo;
+		foreach (PathableArea area in layout.pathableAreas){
+			double rateo = ((double)layout.grid.countArea(area) / (double)layout.grid.countPerimeter(area));
+			rateo = 5000*(rateo/2);
 			shufflePaths(layout.grid, area, rateo, rand);
-			List<List<Coordinates>> tempPaths = layout.grid.findAreas(Constants.PATH_MARKER);
-
-			int count = 0;
-			while(tempPaths.Count > 1 && count < 5000){
-				mergePath(layout.grid, tempPaths, rand);
-				tempPaths = layout.grid.findAreas(Constants.PATH_MARKER);
-				count++;
-			}
-
+			mergePaths(layout.grid, area, rand);
 		}
+		layout.grid.normalize();
 
 		//inserisci tesori
-		foreach(DungeonRoom room in rooms){
-			foreach(Treasure treasure in room.treasures){
-				treasures.Add(TreasureInitializer.initializeTreasure(treasure, rand.Next()));
+		List<Treasure> treasures = new List<Treasure>();
+
+		foreach (DungeonRoom room in rooms) {
+			foreach (Treasure treasure in room.treasures) {
+				treasures.Add(TreasureInitializer.initializeTreasure(treasure, rand));
 			}
 		}
-		//TODO: add treasures to paths
+
+		List<Coordinates> culDeSacs = layout.grid.getCulDeSacs();
+		int antiChances = 100;
+		foreach (Coordinates point in culDeSacs) {
+			if (rand.Next() % antiChances == 0) {
+				layout.grid.put(point, Constants.TREASURE_MARKER);
+				treasures.Add(TreasureInitializer.initializeTreasure(new Treasure(point), rand));
+				antiChances = 100 + (treasures.Count * 9);
+			}
+			else 
+				antiChances -= 9;
+		}
 
 		//LATER_PATCH: inserisci trappole
 
@@ -58,39 +62,83 @@ public class DungeonGenerationController {
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
-	private void shufflePaths(DungeonGrid grid, List<Coordinates> area, double rateo, Random rand){
-		foreach(Coordinates position in area){
-			if(grid.hasDoorsTouching(position)) grid.grid[position.x, position.y] = Constants.PATH_MARKER;
-			else{
-				int rnd = (rand.Next() % 10000) + 1;
-				grid.grid[position.x, position.y] = rnd > rateo ? Constants.PATH_MARKER : Constants.WALL_MARKER;
-			}
+	private void shufflePaths(DungeonGrid grid, PathableArea area, double rateo, Random rand){
 
+		for(int x = area.position.x; x < area.sizeX + area.position.x; x++){
+			for(int y = area.position.y; y < area.sizeY + area.position.y; y++){
+				Coordinates position = new Coordinates(x, y);
+				if(grid.hasDoorsTouching(position)) grid.grid[position.x, position.y] = Constants.PATH_MARKER;
+				else{
+					int rnd = (rand.Next() % 10000) + 1;
+					grid.grid[position.x, position.y] = rnd > rateo ? Constants.PATH_MARKER : Constants.PATHABLE_MARKER;
+				}
+			}
 		}
 	}
 
-	private void mergePath(DungeonGrid grid, List<List<Coordinates>> fragments, Random rand){
+	private void mergePaths(DungeonGrid grid, PathableArea area, Random rand){
 
-		PathDistance pd = new PathDistance(100000);
+		List<List<Coordinates>> tempPaths = grid.findAreas(Constants.PATHABLE_MARKER, area.position, new Coordinates(area.position.x + area.sizeX, area.position.y + area.sizeY));
+		bool[,] linkedGraph = new bool[tempPaths.Count, tempPaths.Count];
 
-		foreach (List<Coordinates> fragment_1 in fragments) {
-			foreach (List<Coordinates> fragment_2 in fragments) {
-				if (fragment_1[0].Equals (fragment_2[0])) {
-					continue;
-				}
-					
-				foreach (Coordinates point_1 in fragment_1) {
-					foreach (Coordinates point_2 in fragment_2) {
-						int tempDistance = Math.Abs(point_1.x - point_2.x) + Math.Abs(point_1.y - point_2.y);
-						if (tempDistance < pd.distance || (tempDistance == pd.distance && rand.Next() % 2 == 0)) {
-							pd.setAs (point_1, point_2, tempDistance);
-						}
-					}
+		for(int i = 0; i < tempPaths.Count; i++){
+			for(int j = 0; j < tempPaths.Count; j++){
+				linkedGraph[i, j] = i == j ? true : false;
+			}
+		}
+
+		int actual = 0;
+		foreach (List<Coordinates> tempPath in tempPaths) {
+			int linkTo = rand.Next () % tempPaths.Count;
+			int count = 0;
+			while(linkedGraph[actual, linkTo] && count < tempPaths.Count){
+				linkTo = (linkTo + 1) % tempPaths.Count;
+				count++;
+			}
+
+			linkedGraph[actual, linkTo] = true;
+			linkedGraph[linkTo, actual] = true;
+			linkAll(linkedGraph, tempPaths.Count, actual, linkTo);
+
+			PathDistance points = findClosest(tempPath, tempPaths[linkTo]);
+			grid.drawPath(points.path_1, points.path_2, rand);
+
+			actual++;
+		}
+
+	}
+
+	private PathDistance findClosest(List<Coordinates> a, List<Coordinates> b){
+		PathDistance result = new PathDistance(10000);
+
+		foreach (Coordinates p1 in a) {
+			foreach (Coordinates p2 in b) {
+				int distance = Math.Abs (p1.x - p2.x) + Math.Abs (p1.y - p2.y);
+				if (distance < result.distance) {
+					result.distance = distance;
+					result.path_1 = p1;
+					result.path_2 = p2;
 				}
 			}
 		}
 
-		grid.drawPath(pd.path_1, pd.path_2, rand);
+		return result;
+	}
+
+	private bool[,] linkAll(bool[,] linkedGraph, int size, int a, int b){
+
+		for(int i = 0; i < size; i++){
+			if(linkedGraph[a, i]){
+				linkedGraph[b, i] = true;
+				linkedGraph[i, b] = true;
+			}
+			if(linkedGraph[b, i]){
+				linkedGraph[a, i] = true;
+				linkedGraph[i, a] = true;
+			}
+		}
+
+		return linkedGraph;
 	}
 
 	private class PathDistance{

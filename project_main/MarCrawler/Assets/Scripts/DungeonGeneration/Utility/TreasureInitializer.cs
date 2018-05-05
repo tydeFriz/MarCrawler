@@ -1,7 +1,8 @@
-﻿
+﻿using System;
+
 public static class TreasureInitializer{
-	//TODO
-	public static Treasure initializeTreasure(Treasure treasure, int seed/*LATER_PATCH: , int dungeonType*/){
+	//TODO \\REQUIRED IMPLEMENTATIONS: Items, Gold
+	public static Treasure initializeTreasure(Treasure treasure, Random rand/*LATER_PATCH: , int dungeonType*/){
 		return treasure;
 	}
 
