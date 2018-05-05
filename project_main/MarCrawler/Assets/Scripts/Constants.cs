@@ -6,8 +6,9 @@
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
-	public const string DUNGEON_GENERATION_MESSAGE = "Dungeon_Generation";
 
+	public const bool DEBUG_WRITE_CONSOLE = false;
+	public const bool DEBUG_WRITE_FILE = true;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
@@ -35,7 +36,6 @@
 	public const int ROOM_9x9_COUNT = 0;
 	public const int ROOM_9x11_COUNT = 0;
 
-	public const char AREA_MARKER = 'A';
 	public const char PSEUDO_ROOM_MARKER = ' ';
 	public const char WALL_MARKER = 'w';
 	public const char DOOR_MARKER = 'D';
@@ -43,6 +43,7 @@
 	public const char TREASURE_MARKER = 'T';
 	public const char PATHABLE_MARKER = '.';
 	public const char PATH_MARKER = '_';
+	public const char DEFAULT_PATH_MARKER = 'p';
 	public const char TEMP_EXPLORE_MARKER = 'F';
 
 	public const bool STEP_X = true;

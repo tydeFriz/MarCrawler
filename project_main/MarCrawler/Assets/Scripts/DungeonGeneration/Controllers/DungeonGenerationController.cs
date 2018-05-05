@@ -23,7 +23,11 @@ public class DungeonGenerationController {
 		//crea percorsi
 		foreach (PathableArea area in layout.pathableAreas){
 			double rateo = ((double)layout.grid.countArea(area) / (double)layout.grid.countPerimeter(area));
-			rateo = 5000*(rateo/2);
+			rateo = 5000*(rateo);
+			if (rateo > 9000)
+				rateo = 9000;
+			if (rateo < 1000)
+				rateo = 1000;
 			shufflePaths(layout.grid, area, rateo, rand);
 			mergePaths(layout.grid, area, rand);
 		}
@@ -39,6 +43,8 @@ public class DungeonGenerationController {
 		}
 
 		List<Coordinates> culDeSacs = layout.grid.getCulDeSacs();
+		foreach(Coordinates culDeSac in culDeSacs){
+		}
 		int antiChances = 100;
 		foreach (Coordinates point in culDeSacs) {
 			if (rand.Next() % antiChances == 0) {
@@ -52,7 +58,7 @@ public class DungeonGenerationController {
 
 		//LATER_PATCH: inserisci trappole
 
-		return (new Dungeon(layout.grid, rooms, treasures/*LATER_PATCH: , traps*/));
+		return (new Dungeon(layout.grid, rooms, treasures, seed/*LATER_PATCH: , traps*/));
 
 	}
 
@@ -78,12 +84,15 @@ public class DungeonGenerationController {
 
 	private void mergePaths(DungeonGrid grid, PathableArea area, Random rand){
 
-		List<List<Coordinates>> tempPaths = grid.findAreas(Constants.PATHABLE_MARKER, area.position, new Coordinates(area.position.x + area.sizeX, area.position.y + area.sizeY));
+		List<List<Coordinates>> tempPaths = grid.findAreas(Constants.PATH_MARKER, area.position, new Coordinates(area.position.x + area.sizeX, area.position.y + area.sizeY));
+		if (tempPaths.Count == 1)
+			return;
+
 		bool[,] linkedGraph = new bool[tempPaths.Count, tempPaths.Count];
 
 		for(int i = 0; i < tempPaths.Count; i++){
 			for(int j = 0; j < tempPaths.Count; j++){
-				linkedGraph[i, j] = i == j ? true : false;
+				linkedGraph[i, j] = (i == j ? true : false);
 			}
 		}
 
@@ -95,6 +104,8 @@ public class DungeonGenerationController {
 				linkTo = (linkTo + 1) % tempPaths.Count;
 				count++;
 			}
+			if (count == tempPaths.Count)
+				continue;
 
 			linkedGraph[actual, linkTo] = true;
 			linkedGraph[linkTo, actual] = true;
@@ -113,6 +124,7 @@ public class DungeonGenerationController {
 
 		foreach (Coordinates p1 in a) {
 			foreach (Coordinates p2 in b) {
+
 				int distance = Math.Abs (p1.x - p2.x) + Math.Abs (p1.y - p2.y);
 				if (distance < result.distance) {
 					result.distance = distance;

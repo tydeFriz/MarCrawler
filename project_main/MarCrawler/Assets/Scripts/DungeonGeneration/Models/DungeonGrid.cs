@@ -39,13 +39,13 @@ public class DungeonGrid{
 			return false;
 
 		int encode = 0;
-		if (point.x > 0 && grid [point.x-1, point.y] != Constants.PATH_MARKER)
+		if (point.x <= 0 || grid[point.x-1, point.y] == Constants.WALL_MARKER)
 			encode += 1;
-		if (point.x < (sizeX-1) && grid [point.x+1, point.y] != Constants.PATH_MARKER)
+		if (point.x >= (sizeX-1) || grid[point.x+1, point.y] == Constants.WALL_MARKER)
 			encode += 10;
-		if (point.y > 0 && grid [point.x, point.y-1] != Constants.PATH_MARKER)
+		if (point.y <= 0 || grid[point.x, point.y-1] == Constants.WALL_MARKER)
 			encode += 100;
-		if (point.y < (sizeX-1) && grid [point.x, point.y+1] != Constants.PATH_MARKER)
+		if (point.y >= (sizeX-1) || grid[point.x, point.y+1] == Constants.WALL_MARKER)
 			encode += 1000;
 		
 			switch(encode){
@@ -75,22 +75,28 @@ public class DungeonGrid{
 	}
 		
 	public List<List<Coordinates>> findAreas(char marker, Coordinates start, Coordinates end){
+
 		List<List<Coordinates>> result = new List<List<Coordinates>>();
 
-		bool[,] found = new bool[end.x - start.x, end.y - start.y];
-		for(int i = start.x; i < end.x; i++){
-			for(int j = start.x; j < end.y; j++){
+		int x = end.x - start.x;
+		int y = end.y - start.y;
+
+		bool[,] found = new bool[x, y];
+		for(int i = 0; i < x; i++){
+			for(int j = 0; j < y; j++){
 				found [i, j] = false;
 			}
 		}
 
-		for(int ii = start.x; ii < end.x; ii++){
-			for(int jj = start.x; jj < end.y; jj++){
-				if (grid [ii, jj] == marker && !found[ii, jj]) {
-					found [ii, jj] = true;
-					List<Coordinates> area = exploreFromPoint(new Coordinates(ii, jj));
+		for(int i = 0; i < x; i++){
+			for(int j = 0; j < y; j++){
+				if (grid [i + start.x, j + start.y] == marker && !found[i, j]) {
+					found [i, j] = true;
+
+					List<Coordinates> area = exploreFromPoint(new Coordinates(i + start.x, j + start.y));
+
 					foreach(Coordinates point in area){
-						found[point.x, point.y] = true;
+						found[point.x - start.x, point.y - start.y] = true;
 					}
 					result.Add(area);
 				}
@@ -121,10 +127,48 @@ public class DungeonGrid{
 
 	}
 
-	public void drawPath(Coordinates start, Coordinates end, System.Random rnd){
+	public void drawPath(Coordinates start, Coordinates end, System.Random rand){
 
-		//TODO
+		int distanceX = Math.Abs(start.x - end.x);
+		int distanceY = Math.Abs(start.y - end.y);
+		int directionX = start.x > end.x ? -1 : 0;
+		directionX = start.x < end.x ? 1 : directionX;
+		int directionY = start.y > end.y ? -1 : 0;
+		directionY = start.y < end.y ? 1 : directionY;
 
+		Coordinates nextStep;
+		while (distanceX > 0 && distanceY > 0) {
+			int rateo;
+			if (distanceX > distanceY) {
+				rateo = 2;
+			} else if (distanceX < distanceY) {
+				rateo = 0;
+			} else {
+				rateo = 1;
+			}
+			if (rand.Next() % 3 < rateo) {
+				nextStep = new Coordinates(start.x + directionX, start.y);
+				distanceX--;
+			}
+			else {
+				nextStep = new Coordinates(start.x, start.y + directionY);
+				distanceY--;
+			}
+			grid[nextStep.x, nextStep.y] = grid[start.x, start.y];
+			start = nextStep;
+		}
+		while (distanceX > 0) {
+			nextStep = new Coordinates(start.x + directionX, start.y);
+			grid[nextStep.x, nextStep.y] = grid[start.x, start.y];
+			start = nextStep;
+			distanceX--;
+		}
+		while (distanceY > 0) {
+			nextStep = new Coordinates(start.x, start.y + directionY);
+			grid[nextStep.x, nextStep.y] = grid[start.x, start.y];
+			start = nextStep;
+			distanceY--;
+		}
 	}
 
 	public void normalize(){
@@ -132,11 +176,13 @@ public class DungeonGrid{
 			for(int j = 0; j < sizeY; j++){
 				if(grid[i, j] == Constants.PATHABLE_MARKER)
 					grid[i, j] = Constants.WALL_MARKER;
+				if(grid[i, j] == Constants.DEFAULT_PATH_MARKER)
+					grid[i, j] = Constants.PATH_MARKER;
 			}
 		}
 	}
 
-	public bool hasDoorsTouching(Coordinates position){
+	public bool hasDoorsTouching(Coordinates position){ //TODO: refactor
 		if(position.x > 0 && grid[position.x-1, position.y] == Constants.DOOR_MARKER) return true;
 		if(position.x < (sizeX-1) && grid[position.x+1, position.y] == Constants.DOOR_MARKER) return true;
 		if(position.y > 0 && grid[position.x, position.y-1] == Constants.DOOR_MARKER) return true;
@@ -158,9 +204,11 @@ public class DungeonGrid{
 		char marker = grid[point.x, point.y];
 		List<Coordinates> points = new List<Coordinates>();
 		recursiveExploration(marker, point, points);
+
 		foreach(Coordinates p in points){
 			grid[p.x, p.y] = marker;
 		}
+
 		return points;
 	}
 		

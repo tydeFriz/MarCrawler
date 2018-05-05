@@ -15,7 +15,7 @@ public class r_5x5_001 : DungeonRoom{
 			};
 			treasures.Add (new Treasure (new Coordinates (1, 0)));
 			treasures.Add (new Treasure (new Coordinates (1, 4)));
-			grid = new DungeonGrid(3, 3, defGrid);
+			grid = new DungeonGrid(5, 5, defGrid);
 		} 
 		else {
 			defGrid = new char[5, 5] {
