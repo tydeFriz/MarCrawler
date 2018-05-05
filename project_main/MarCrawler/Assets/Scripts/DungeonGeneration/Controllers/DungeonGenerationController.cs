@@ -83,7 +83,7 @@ public class DungeonGenerationController {
 	}
 
 	private void mergePaths(DungeonGrid grid, PathableArea area, Random rand){
-
+		
 		List<List<Coordinates>> tempPaths = grid.findAreas(Constants.PATH_MARKER, area.position, new Coordinates(area.position.x + area.sizeX, area.position.y + area.sizeY));
 		if (tempPaths.Count == 1)
 			return;
@@ -98,7 +98,8 @@ public class DungeonGenerationController {
 
 		int actual = 0;
 		foreach (List<Coordinates> tempPath in tempPaths) {
-			int linkTo = rand.Next () % tempPaths.Count;
+			//LATER_PATCH: make linkTo the closer path, not random
+			int linkTo = rand.Next () % tempPaths.Count; 
 			int count = 0;
 			while(linkedGraph[actual, linkTo] && count < tempPaths.Count){
 				linkTo = (linkTo + 1) % tempPaths.Count;

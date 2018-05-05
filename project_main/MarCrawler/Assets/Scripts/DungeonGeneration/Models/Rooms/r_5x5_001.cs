@@ -3,9 +3,10 @@
 public class r_5x5_001 : DungeonRoom{
 	
 	public r_5x5_001(bool rotate){
+		this.rotate = rotate;
 		treasures = new List<Treasure> ();
 		char[,] defGrid;
-		if (rotate) {
+		if (!rotate) {
 			defGrid = new char[5, 5] {
 				{ 'w', ' ', ' ', ' ', 'w' },
 				{ 'T', 'w', ' ', 'w', 'T' },

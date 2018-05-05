@@ -3,7 +3,7 @@
 public class r_3x3_001 : DungeonRoom{
 	
 	public r_3x3_001(bool rotate){
-
+		this.rotate = rotate;
 		treasures = new List<Treasure> ();
 		char[,] defGrid;
 		defGrid = new char[3, 3] {

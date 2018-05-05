@@ -36,11 +36,11 @@ public class l_01 : DungeonLayout{
 		grid = new DungeonGrid(25, 25, defGrid);
 
 		rooms = new List<PseudoRoom> {
-			//new PseudoRoom(new Coordinates(2, 0), 7, 7),
+			new PseudoRoom(new Coordinates(2, 0), 7, 7),
 			new PseudoRoom(new Coordinates(13, 1), 5, 5),
-			//new PseudoRoom(new Coordinates(2, 8), 11, 7),
-			new PseudoRoom(new Coordinates(13, 14), 3, 5),
-			//new PseudoRoom(new Coordinates(20, 5), 3, 9),
+			new PseudoRoom(new Coordinates(2, 8), 7, 11),
+			new PseudoRoom(new Coordinates(13, 14), 5, 3),
+			new PseudoRoom(new Coordinates(20, 5), 3, 9),
 			new PseudoRoom(new Coordinates(2, 22), 3, 3),
 			new PseudoRoom(new Coordinates(12, 22), 3, 3),
 			new PseudoRoom(new Coordinates(20, 20), 5, 5),

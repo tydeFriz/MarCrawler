@@ -3,10 +3,10 @@
 public class r_3x3_002 : DungeonRoom{
 
 	public r_3x3_002(bool rotate){
-
+		this.rotate = rotate;
 		treasures = new List<Treasure> ();
 		char[,] defGrid;
-		if (rotate) {
+		if (!rotate) {
 			defGrid = new char[3, 3] {
 				{ 'w', 'T', 'w' },
 				{ ' ', 'w', 'w' },

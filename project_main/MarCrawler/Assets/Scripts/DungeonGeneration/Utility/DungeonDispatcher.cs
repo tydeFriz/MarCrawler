@@ -12,9 +12,10 @@ public static class DungeonDispatcher{
 
 	public static DungeonRoom getDungeonRoomByType(int sizeX, int sizeY, int rand){
 		bool rotate = false;
-		if (sizeX > sizeY || ((sizeX == sizeY) && (rand % 2 == 0))) {
+		if (((sizeX == sizeY) && (rand % 2 == 0)) || sizeX > sizeY) {
 			VariableSwapper.Swap(ref sizeX, ref sizeY);
 			rotate = true;
+			TestLogger.log ("rotating the thingy "+sizeX+"x"+sizeY);
 		}
 		switch ((sizeX*Constants.ROOM_SIZE_X_MAX_CARDINALITY) + sizeY) {
 		/* 
@@ -101,10 +102,25 @@ public static class DungeonDispatcher{
 			+1:
 			picked = new r_3x5_001(rotate);
 			break;
+		case(3*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(9*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_3x9_001(rotate);
+			break;
 		case(5*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
 			(5*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
 			+1:
 			picked = new r_5x5_001(rotate);
+			break;
+		case(7*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(7*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_7x7_001(rotate);
+			break;
+		case(7*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(11*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_7x11_001(rotate);
 			break;
 		default:
 			throw new DungeonRoomNotAvailableException();
