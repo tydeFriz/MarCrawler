@@ -16,6 +16,11 @@
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
+	///<summary>
+	/// a number too large to fit inside a dungeon, no matter what
+	/// </summary>
+	public const int TOO_MUCH_FOR_DUNGEON_GENERATION = 10000;
+
 	public const int ROOM_NUMBER_MAX_CARDINALITY = 10;
 	public const int ROOM_SIZE_X_MAX_CARDINALITY = 100;
 	public const int ROOM_SIZE_Y_MAX_CARDINALITY = 100;
@@ -48,4 +53,7 @@
 
 	public const bool STEP_X = true;
 	public const bool STEP_Y = false;
+
+	public const int TREASURE_SPAWN_PERIOD = 10;
+	public const int TREASURE_SPAWN_INCREMENTAL = 1;
 }

@@ -53,7 +53,6 @@ public class DungeonGrid{
 		case 1101:
 		case 1011:
 		case 0111:
-		case 1111:
 			return true;
 		default:
 			return false;

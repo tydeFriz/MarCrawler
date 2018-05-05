@@ -32,6 +32,40 @@ public abstract class PathLinkingStrategy {
 		}
 	}
 
+	protected PathDistance findClosestPoints(List<Coordinates> a, List<Coordinates> b){
+		PathDistance result = new PathDistance(Constants.TOO_MUCH_FOR_DUNGEON_GENERATION);
+
+		foreach (Coordinates p1 in a) {
+			foreach (Coordinates p2 in b) {
+
+				int distance = Math.Abs (p1.x - p2.x) + Math.Abs (p1.y - p2.y);
+				if (distance < result.distance) {
+					result.distance = distance;
+					result.path_1 = p1;
+					result.path_2 = p2;
+				}
+			}
+		}
+
+		return result;
+	}
+
+	protected bool[,] linkAll(bool[,] linkedGraph, int size, int a, int b){
+
+		for(int i = 0; i < size; i++){
+			if(linkedGraph[a, i]){
+				linkedGraph[b, i] = true;
+				linkedGraph[i, b] = true;
+			}
+			if(linkedGraph[b, i]){
+				linkedGraph[a, i] = true;
+				linkedGraph[i, a] = true;
+			}
+		}
+
+		return linkedGraph;
+	}
+
 	protected class PathDistance{
 
 		public Coordinates path_1;

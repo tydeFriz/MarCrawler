@@ -21,7 +21,7 @@ public class DungeonGenerationController {
 		}
 
 		//crea percorsi
-		PathLinkingStrategy pathLinker = new RandomPathLinker();
+		PathLinkingStrategy pathLinker = new ClosestPathLinker(); //LATER_PATCH: decide which srtategy to use
 		pathLinker.linkPaths (layout, rand);
 		layout.grid.normalize();
 
@@ -37,15 +37,15 @@ public class DungeonGenerationController {
 		List<Coordinates> culDeSacs = layout.grid.getCulDeSacs();
 		foreach(Coordinates culDeSac in culDeSacs){
 		}
-		int antiChances = 100;
+		int antiChances = Constants.TREASURE_SPAWN_PERIOD;
 		foreach (Coordinates point in culDeSacs) {
 			if (rand.Next() % antiChances == 0) {
 				layout.grid.put(point, Constants.TREASURE_MARKER);
 				treasures.Add(TreasureInitializer.initializeTreasure(new Treasure(point), rand));
-				antiChances = 100 + (treasures.Count * 9);
+				antiChances = Constants.TREASURE_SPAWN_PERIOD + (treasures.Count * Constants.TREASURE_SPAWN_INCREMENTAL);
 			}
 			else 
-				antiChances -= 9;
+				antiChances -= Constants.TREASURE_SPAWN_INCREMENTAL;
 		}
 
 		//LATER_PATCH: inserisci trappole
