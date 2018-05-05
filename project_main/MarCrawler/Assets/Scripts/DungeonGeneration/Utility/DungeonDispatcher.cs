@@ -15,7 +15,6 @@ public static class DungeonDispatcher{
 		if (((sizeX == sizeY) && (rand % 2 == 0)) || sizeX > sizeY) {
 			VariableSwapper.Swap(ref sizeX, ref sizeY);
 			rotate = true;
-			TestLogger.log ("rotating the thingy "+sizeX+"x"+sizeY);
 		}
 		switch ((sizeX*Constants.ROOM_SIZE_X_MAX_CARDINALITY) + sizeY) {
 		/* 
