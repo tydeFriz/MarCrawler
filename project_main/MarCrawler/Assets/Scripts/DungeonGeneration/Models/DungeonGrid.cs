@@ -181,7 +181,7 @@ public class DungeonGrid{
 		}
 	}
 
-	public bool hasDoorsTouching(Coordinates position){ //TODO: refactor
+	public bool hasDoorsTouching(Coordinates position){ //TODO: refactor, include 'p'
 		if(position.x > 0 && grid[position.x-1, position.y] == Constants.DOOR_MARKER) return true;
 		if(position.x < (sizeX-1) && grid[position.x+1, position.y] == Constants.DOOR_MARKER) return true;
 		if(position.y > 0 && grid[position.x, position.y-1] == Constants.DOOR_MARKER) return true;
@@ -202,10 +202,15 @@ public class DungeonGrid{
 	private List<Coordinates> exploreFromPoint(Coordinates point){
 		char marker = grid[point.x, point.y];
 		List<Coordinates> points = new List<Coordinates>();
+
+		TestLogger.log("exploring with marker: "+marker);
+		TestLogger.log("starting at: "+point.x+","+point.y);
+
 		recursiveExploration(marker, point, points);
 
 		foreach(Coordinates p in points){
 			grid[p.x, p.y] = marker;
+			TestLogger.log("new point: "+p.x+","+p.y);
 		}
 
 		return points;

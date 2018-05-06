@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TestBehaviour : MonoBehaviour {
 
@@ -8,13 +9,13 @@ public class TestBehaviour : MonoBehaviour {
 	void Start () {
 
 		List<Dungeon> dungeons = new List<Dungeon>();
+		System.Random rand = new System.Random();
 
 		DungeonGenerationController controller = new DungeonGenerationController();
-		dungeons.Add(controller.generateDungeon(42));
-		dungeons.Add(controller.generateDungeon(1));
-		dungeons.Add(controller.generateDungeon(47659));
-		dungeons.Add(controller.generateDungeon(-2315));
-		dungeons.Add(controller.generateDungeon(-63525));
+		dungeons.Add(controller.generateDungeon(rand.Next()));
+		dungeons.Add(controller.generateDungeon(rand.Next()));
+		dungeons.Add(controller.generateDungeon(rand.Next()));
+		dungeons.Add(controller.generateDungeon(rand.Next()));
 		DEBUG_TEST_ONY_printDungeon(dungeons);
 	}
 	
