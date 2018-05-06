@@ -203,14 +203,10 @@ public class DungeonGrid{
 		char marker = grid[point.x, point.y];
 		List<Coordinates> points = new List<Coordinates>();
 
-		TestLogger.log("exploring with marker: "+marker);
-		TestLogger.log("starting at: "+point.x+","+point.y);
-
 		recursiveExploration(marker, point, points);
 
 		foreach(Coordinates p in points){
 			grid[p.x, p.y] = marker;
-			TestLogger.log("new point: "+p.x+","+p.y);
 		}
 
 		return points;

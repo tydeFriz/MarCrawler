@@ -24,6 +24,7 @@ public class DungeonGenerationController {
 		PathLinkingStrategy pathLinker = new ClosestPathLinker(); //LATER_PATCH: decide which srtategy to use
 		pathLinker.linkPaths (layout, rand);
 		layout.grid.normalize();
+		
 
 		//inserisci tesori
 		List<Treasure> treasures = new List<Treasure>();

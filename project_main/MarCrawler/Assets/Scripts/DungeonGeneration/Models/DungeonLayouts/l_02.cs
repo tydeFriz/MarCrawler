@@ -56,7 +56,7 @@ public class l_02 : DungeonLayout{
 			new PathableArea(new Coordinates(0, 0), 7, 3),
 			new PathableArea(new Coordinates(16, 0), 10, 4),
 			new PathableArea(new Coordinates(0, 4), 2, 9),
-			new PathableArea(new Coordinates(3, 4), 1, 9),
+			new PathableArea(new Coordinates(3, 4), 9, 1),
 			new PathableArea(new Coordinates(3, 6), 8, 4),
 			new PathableArea(new Coordinates(22, 5), 7, 5),
 			new PathableArea(new Coordinates(13, 11), 11, 6),
