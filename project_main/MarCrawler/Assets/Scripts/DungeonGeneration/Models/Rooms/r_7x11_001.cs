@@ -40,4 +40,3 @@ public class r_7x11_001 : DungeonRoom{
 	}
 		
 }
-
