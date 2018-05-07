@@ -7,6 +7,8 @@ public static class DungeonDispatcher{
 			return new l_01();
 		case 2:
 			return new l_02();
+		case 3:
+			return new l_03();
 		default:
 			throw new DungeonLayoutNotAvailableException();
 		}

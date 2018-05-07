@@ -16,7 +16,6 @@ public class TestBehaviour : MonoBehaviour {
 
 		for(int i = 0; i < 4; i++){
 			int seed = rand.Next();
-			TestLogger.log("new dungeon. seed: " + seed);
 			dungeons.Add(controller.generateDungeon(seed));
 		}
 		DEBUG_TEST_ONY_printDungeon(dungeons);

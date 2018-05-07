@@ -25,7 +25,7 @@
 	public const int ROOM_SIZE_X_MAX_CARDINALITY = 100;
 	public const int ROOM_SIZE_Y_MAX_CARDINALITY = 100;
 
-	public const int LAYOUTS_COUNT = 2;
+	public const int LAYOUTS_COUNT = 3;
 
 	public const int ROOM_3x3_COUNT = 3;
 	public const int ROOM_3x5_COUNT = 3;
