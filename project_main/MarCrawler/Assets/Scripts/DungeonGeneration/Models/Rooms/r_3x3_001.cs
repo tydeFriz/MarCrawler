@@ -11,7 +11,7 @@ public class r_3x3_001 : DungeonRoom{
 			{ ' ', 'T', ' ' },
 			{ ' ', ' ', ' ' }
 		};
-		treasures.Add (new Treasure (new Coordinates (1, 1), null, 0));
+		treasures.Add (new Treasure (new Coordinates (1, 1)));
 		grid = new DungeonGrid(3, 3, defGrid);
 
 		modelFileName = "TEMP_SHITTY_NAME_REMOVE_ME_BITCH";

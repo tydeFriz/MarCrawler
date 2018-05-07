@@ -9,8 +9,8 @@ public class r_3x3_002 : DungeonRoom{
 		if (!rotate) {
 			defGrid = new char[3, 3] {
 				{ 'w', 'T', 'w' },
-				{ ' ', 'w', 'w' },
-				{ ' ', ' ', 'w' }
+				{ ' ', 'w', ' ' },
+				{ ' ', ' ', ' ' }
 			};
 			treasures.Add (new Treasure (new Coordinates (0, 1)));
 			grid = new DungeonGrid(3, 3, defGrid);
@@ -19,7 +19,7 @@ public class r_3x3_002 : DungeonRoom{
 			defGrid = new char[3, 3] {
 				{ ' ', ' ', 'w' },
 				{ ' ', 'w', 'T' },
-				{ 'w', 'w', 'w' }
+				{ ' ', ' ', 'w' }
 			};
 			treasures.Add (new Treasure (new Coordinates (1, 2)));
 			grid = new DungeonGrid(3, 3, defGrid);
