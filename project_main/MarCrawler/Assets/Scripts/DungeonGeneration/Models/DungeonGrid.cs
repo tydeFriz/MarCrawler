@@ -39,30 +39,31 @@ public class DungeonGrid{
 		grid[point.x, point.y] = marker;
 	}
 
-	public bool isCulDeSac(Coordinates point){ //TODO: refactor, use isValidPoint(
+	public bool isCulDeSac(Coordinates position){
 
-		if (grid [point.x, point.y] != Constants.PATH_MARKER)
+		if (!isValidPoint (position))
+			return false;
+		if (grid [position.x, position.y] != Constants.PATH_MARKER)
 			return false;
 
-		int encode = 0;
-		if (point.x <= 0 || grid[point.x-1, point.y] == Constants.WALL_MARKER)
-			encode += 1;
-		if (point.x >= (sizeX-1) || grid[point.x+1, point.y] == Constants.WALL_MARKER)
-			encode += 10;
-		if (point.y <= 0 || grid[point.x, point.y-1] == Constants.WALL_MARKER)
-			encode += 100;
-		if (point.y >= (sizeX-1) || grid[point.x, point.y+1] == Constants.WALL_MARKER)
-			encode += 1000;
-		
-			switch(encode){
-		case 1110:
-		case 1101:
-		case 1011:
-		case 0111:
+		int count = 0;
+		Coordinates point = new Coordinates(position.x-1, position.y);
+		if (isWall(point) || !isValidPoint(point))
+			count++;
+		point = new Coordinates(position.x+1, position.y);
+		if (isWall(point) || !isValidPoint(point))
+			count++;
+		point = new Coordinates(position.x, position.y-1);
+		if (isWall(point) || !isValidPoint(point))
+			count++;
+		point = new Coordinates(position.x, position.y+1);
+		if (isWall(point) || !isValidPoint(point))
+			count++;
+
+		if (count == 3)
 			return true;
-		default:
+		else
 			return false;
-		}
 	}
 
 	public bool isDoor(Coordinates point){
@@ -77,6 +78,14 @@ public class DungeonGrid{
 		if (!isValidPoint(point))
 			return false;
 		if (grid [point.x, point.y] != Constants.DEFAULT_PATH_MARKER)
+			return false;
+		return true;
+	}
+
+	public bool isWall(Coordinates point){
+		if (!isValidPoint(point))
+			return false;
+		if (grid [point.x, point.y] != Constants.WALL_MARKER)
 			return false;
 		return true;
 	}
