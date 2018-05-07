@@ -61,4 +61,4 @@ $RECYCLE.BIN/
 project_main/MarCrawler/Temp/UnityLockfile
 
 # Unity temps
-project_main/MarCrawler/Temp/
+project_main/MarCrawler/Temp/*
