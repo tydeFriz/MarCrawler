@@ -23,7 +23,7 @@ public abstract class PathLinkingStrategy {
 		for(int x = area.position.x; x < area.sizeX + area.position.x; x++){
 			for(int y = area.position.y; y < area.sizeY + area.position.y; y++){
 				Coordinates position = new Coordinates(x, y);
-				if(grid.hasDoorsTouching(position)) grid.grid[position.x, position.y] = Constants.PATH_MARKER;
+				if(grid.hasDoorsTouching(position) || grid.hasForcedPathTouching(position)) grid.grid[position.x, position.y] = Constants.PATH_MARKER;
 				else{
 					int rnd = (rand.Next() % 10000) + 1;
 					grid.grid[position.x, position.y] = rnd > rateo ? Constants.PATH_MARKER : Constants.PATHABLE_MARKER;

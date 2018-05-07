@@ -29,11 +29,17 @@ public class DungeonGrid{
 		}
 	}
 
+	public bool isValidPoint(Coordinates point){
+		if(point.x < 0 || point.x >= sizeX || point.y < 0 || point.y >= sizeY)
+			return false;
+		return true;
+	}
+
 	public void put(Coordinates point, char marker){
 		grid[point.x, point.y] = marker;
 	}
 
-	public bool isCulDeSac(Coordinates point){
+	public bool isCulDeSac(Coordinates point){ //TODO: refactor, use isValidPoint(
 
 		if (grid [point.x, point.y] != Constants.PATH_MARKER)
 			return false;
@@ -57,6 +63,22 @@ public class DungeonGrid{
 		default:
 			return false;
 		}
+	}
+
+	public bool isDoor(Coordinates point){
+		if (!isValidPoint(point))
+			return false;
+		if (grid [point.x, point.y] != Constants.DOOR_MARKER && grid [point.x, point.y] != Constants.SECRET_DOOR_MARKER)
+			return false;
+		return true;
+	}
+
+	public bool isForcedPath(Coordinates point){
+		if (!isValidPoint(point))
+			return false;
+		if (grid [point.x, point.y] != Constants.DEFAULT_PATH_MARKER)
+			return false;
+		return true;
 	}
 
 	public List<Coordinates> getCulDeSacs(){
@@ -181,16 +203,20 @@ public class DungeonGrid{
 		}
 	}
 
-	public bool hasDoorsTouching(Coordinates position){ //TODO: refactor, include 'p'
-		if(position.x > 0 && grid[position.x-1, position.y] == Constants.DOOR_MARKER) return true;
-		if(position.x < (sizeX-1) && grid[position.x+1, position.y] == Constants.DOOR_MARKER) return true;
-		if(position.y > 0 && grid[position.x, position.y-1] == Constants.DOOR_MARKER) return true;
-		if(position.y < (sizeY-1) && grid[position.x, position.y+1] == Constants.DOOR_MARKER) return true;
-		if(position.x > 0 && grid[position.x-1, position.y] == Constants.SECRET_DOOR_MARKER) return true;
-		if(position.x < (sizeX-1) && grid[position.x+1, position.y] == Constants.SECRET_DOOR_MARKER) return true;
-		if(position.y > 0 && grid[position.x, position.y-1] == Constants.SECRET_DOOR_MARKER) return true;
-		if(position.y < (sizeY-1) && grid[position.x, position.y+1] == Constants.SECRET_DOOR_MARKER) return true;
-		return false;
+	public bool hasDoorsTouching(Coordinates position){
+
+		return(isDoor (new Coordinates (position.x - 1, position.y))
+			|| isDoor (new Coordinates (position.x + 1, position.y))
+			|| isDoor (new Coordinates (position.x, position.y - 1))
+			|| isDoor (new Coordinates (position.x, position.y + 1)));
+	}
+
+	public bool hasForcedPathTouching(Coordinates position){
+
+		return(isForcedPath (new Coordinates (position.x - 1, position.y))
+			|| isForcedPath (new Coordinates (position.x + 1, position.y))
+			|| isForcedPath (new Coordinates (position.x, position.y - 1))
+			|| isForcedPath (new Coordinates (position.x, position.y + 1)));
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
