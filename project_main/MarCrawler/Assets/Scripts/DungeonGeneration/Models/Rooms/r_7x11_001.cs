@@ -18,7 +18,7 @@ public class r_7x11_001 : DungeonRoom{
 			};
 			treasures.Add (new Treasure (new Coordinates (3, 7)));
 			grid = new DungeonGrid(7, 11, defGrid);
-		} 
+		}
 		else {
 			defGrid = new char[11, 7] {
 				{ ' ', ' ', ' ', ' ', ' ', ' ', ' ' },

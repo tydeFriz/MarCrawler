@@ -15,7 +15,7 @@ public class DungeonGenerationController {
 		//scegli stanze
 		List<DungeonRoom> rooms = new List<DungeonRoom>();
 		foreach (PseudoRoom room in layout.rooms) {
-			DungeonRoom pickedRoom = DungeonDispatcher.getDungeonRoomByType (room.sizeX, room.sizeY, rand.Next());
+			DungeonRoom pickedRoom = DungeonDispatcher.getDungeonRoomByType (room.sizeX, room.sizeY, rand.Next(), rand);
 			layout.grid.paste(pickedRoom.grid, room.position);
 			rooms.Add(pickedRoom);
 		}

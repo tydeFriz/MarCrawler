@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 public static class DungeonDispatcher{
 		
 	public static DungeonLayout getDungeonLayoutById(int id){
@@ -9,14 +10,17 @@ public static class DungeonDispatcher{
 			return new l_02();
 		case 3:
 			return new l_03();
+		case 4:
+			return new l_04();
 		default:
 			throw new DungeonLayoutNotAvailableException();
 		}
 	}
 
-	public static DungeonRoom getDungeonRoomByType(int sizeX, int sizeY, int rand){
+	public static DungeonRoom getDungeonRoomByType(int sizeX, int sizeY, int rand, Random r){
+
 		bool rotate = false;
-		if (((sizeX == sizeY) && (rand % 2 == 0)) || sizeX > sizeY) {
+		if (((sizeX == sizeY) && (r.Next() % 2 == 0)) || sizeX > sizeY) {
 			VariableSwapper.Swap(ref sizeX, ref sizeY);
 			rotate = true;
 		}
@@ -34,7 +38,7 @@ public static class DungeonDispatcher{
 			return getDungeonRoomById ((rand % Constants.ROOM_3x5_COUNT)+1, 3, 5, rotate);
 		case(3*Constants.ROOM_SIZE_X_MAX_CARDINALITY)
 			+7:
-			return getDungeonRoomById ((rand % Constants.ROOM_3x7_COUNT) + 1, 3, 7, rotate);
+			return getDungeonRoomById ((rand % Constants.ROOM_3x7_COUNT)+1, 3, 7, rotate);
 		case(3*Constants.ROOM_SIZE_X_MAX_CARDINALITY)
 			+9:
 			return getDungeonRoomById ((rand % Constants.ROOM_3x9_COUNT)+1, 3, 9, rotate);
@@ -66,7 +70,7 @@ public static class DungeonDispatcher{
 			+11:
 			return getDungeonRoomById ((rand % Constants.ROOM_9x11_COUNT)+1, 9, 11, rotate);
 		default:
-			throw new DungeonRoomNotAvailableException();
+			throw new DungeonRoomNotAvailableException("invalid request. size: "+sizeX+"x"+sizeY);
 		}
 	}
 
@@ -77,7 +81,7 @@ public static class DungeonDispatcher{
 	//////////////////////////////////////////////////////////////////////////////////
 
 	private static DungeonRoom getDungeonRoomById(int id, int sizeX, int sizeY, bool rotate){
-
+		
 		id = (sizeX * Constants.ROOM_SIZE_X_MAX_CARDINALITY * Constants.ROOM_SIZE_Y_MAX_CARDINALITY * Constants.ROOM_NUMBER_MAX_CARDINALITY) +
 			(sizeY * Constants.ROOM_SIZE_Y_MAX_CARDINALITY * Constants.ROOM_NUMBER_MAX_CARDINALITY)
 			+id;
@@ -170,6 +174,11 @@ public static class DungeonDispatcher{
 			+2:
 			picked = new r_5x9_002(rotate);
 			break;
+		case(5*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(11*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_5x11_001(rotate);
+			break;
 		case(7*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
 			(7*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
 			+1:
@@ -179,6 +188,11 @@ public static class DungeonDispatcher{
 			(7*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
 			+2:
 			picked = new r_7x7_002(rotate);
+			break;
+		case(7*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(9*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_7x9_001(rotate);
 			break;
 		case(7*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
 			(11*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
@@ -191,7 +205,7 @@ public static class DungeonDispatcher{
 			picked = new r_7x11_002(rotate);
 			break;
 		default:
-			throw new DungeonRoomNotAvailableException();
+			throw new DungeonRoomNotAvailableException("invalid request. room id: "+id+" size: "+sizeX+"x"+sizeY);
 		}
 
 		return picked;

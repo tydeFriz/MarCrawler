@@ -90,6 +90,14 @@ public class DungeonGrid{
 		return true;
 	}
 
+	public bool isTreasure(Coordinates point){
+		if (!isValidPoint(point))
+			return false;
+		if (grid [point.x, point.y] != Constants.TREASURE_MARKER)
+			return false;
+		return true;
+	}
+
 	public List<Coordinates> getCulDeSacs(){
 		List<Coordinates> culDeSacs = new List<Coordinates>();
 

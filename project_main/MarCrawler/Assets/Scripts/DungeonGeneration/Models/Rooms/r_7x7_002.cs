@@ -34,7 +34,7 @@ public class r_7x7_002 : DungeonRoom{
 			grid = new DungeonGrid(7, 7, defGrid);
 		}
 		modelFileName = "TEMP_SHITTY_NAME_REMOVE_ME_BITCH";
-
+		
 	}
 
 }

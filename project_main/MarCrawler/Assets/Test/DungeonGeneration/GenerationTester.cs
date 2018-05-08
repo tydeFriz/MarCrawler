@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using System.Collections.Generic;
 
-public class TestBehaviour : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-
+public class GenerationTester{
+		
+	public static void testGeneration(){
 		List<Dungeon> dungeons = new List<Dungeon>();
 		System.Random rand = new System.Random();
 		rand.Next ();
@@ -19,15 +14,9 @@ public class TestBehaviour : MonoBehaviour {
 			dungeons.Add(controller.generateDungeon(seed));
 		}
 		DEBUG_TEST_ONY_printDungeon(dungeons);
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
-	private void DEBUG_TEST_ONY_printDungeon(List<Dungeon> dungeons){
+	private static void DEBUG_TEST_ONY_printDungeon(List<Dungeon> dungeons){
 
 		foreach (Dungeon d in dungeons) {
 			TestLogger.log ("dungeon seed: "+d.seed);
@@ -50,3 +39,4 @@ public class TestBehaviour : MonoBehaviour {
 	}
 
 }
+
