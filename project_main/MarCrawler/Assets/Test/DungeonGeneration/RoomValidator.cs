@@ -75,6 +75,8 @@ public class RoomValidator {
 
 	private static void singleValidation(DungeonRoom room, int id, int sizeX, int sizeY){
 
+		string useless = "";
+
 		TestLogger.log("validating room - id: "+id+" size: "+sizeX+"x"+sizeY);
 
 		if (room == null)
@@ -88,13 +90,13 @@ public class RoomValidator {
 		if (room.treasures == null)
 			throw new WrongRoomDeclarationException ("room.treasures is NULL. room id: "+id+" size: "+sizeX+"x"+sizeY);
 		try{
-			char a = room.grid.grid[sizeX, 0];
+			room.grid.grid[sizeX, 0] = 'x';
 			throw new WrongRoomDeclarationException("room.grid.grid's X axis. room id: "+id+" size: "+sizeX+"x"+sizeY);
-		}catch(Exception e){}
+		}catch(Exception e){useless = e.Message;}
 		try{
-			char a = room.grid.grid[0, sizeY];
+			room.grid.grid[0, sizeY] = 'x';
 			throw new WrongRoomDeclarationException("room.grid.grid's Y axis. room id: "+id+" size: "+sizeX+"x"+sizeY);
-		}catch(Exception e){}
+		}catch(Exception e){useless = e.Message;}
 		foreach (Treasure t in room.treasures) {
 			if(!room.grid.isTreasure(t.position))
 				throw new WrongRoomDeclarationException("treasure position mismatch. room id: "+id+" size: "+sizeX+"x"+sizeY);
@@ -102,6 +104,8 @@ public class RoomValidator {
 
 		TestLogger.log ("validated");
 		TestLogger.log ("");
+
+		if(useless == "+-+") TestLogger.log ("");
 	}
 
 }

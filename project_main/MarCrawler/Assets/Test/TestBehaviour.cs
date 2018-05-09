@@ -30,12 +30,12 @@ public class TestBehaviour : MonoBehaviour {
 			
 		if (Constants.TEST_DUNGEON_GENERATION)
 			DungeonGenerationTester.testGeneration ();
+		
+		//if (Constants.VALIDATE_CHARACTERS)
+		//	/*character validation function call here*/;
 
-		if (Constants.VALIDATE_CHARACTERS)
-			/*character validation function call here*/;
-
-		if (Constants.TEST_CHARACTERS_GENERATION)
-			/*character generation test function call here*/;
+		//if (Constants.TEST_CHARACTERS_GENERATION)
+		//	/*character generation test function call here*/;
 	}
 	 
 

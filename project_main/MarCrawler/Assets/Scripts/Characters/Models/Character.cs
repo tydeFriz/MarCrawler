@@ -8,7 +8,23 @@ public abstract class Character {
 	public Race race;
 	public Equip equip;
 	public List<Upgrade> upgrades;
-	//TODO: stats
+
+	//stats
+	public int maxHp;
+	public int hp;
+	public int maxMp;
+	public int mp;
+	public int attackPower;
+	public int magicPower;
+	public int slashResistance;
+	public int bashResistance;
+	public int pierceResistance;
+	public int fireResistance;
+	public int iceResistance;
+	public int thunderResistance;
+	public int speed;
+	public int avoidance;
+	public int critChance;
 
 	//combat
 	public Status status;

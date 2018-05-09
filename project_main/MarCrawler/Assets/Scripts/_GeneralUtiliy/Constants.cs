@@ -73,6 +73,9 @@
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
+	public const int STARTING_POOL_SIZE = 20;
+	public const int STARTING_POOL_PICKABLE = 8;
+
 	public const int TOTAL_CLASSES_NUMBER = 1;
 
 	public const int WARRIOR_CLASS = 1;

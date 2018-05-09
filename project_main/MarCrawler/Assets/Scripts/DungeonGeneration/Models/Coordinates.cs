@@ -26,6 +26,10 @@ public class Coordinates{
 		return true;
 	}
 
+	public override int GetHashCode(){
+		return (x*Constants.TOO_MUCH_FOR_DUNGEON_GENERATION + y);
+	}
+
 	public void setByCoords(int x, int y){
 		this.x = x;
 		this.y = y;
