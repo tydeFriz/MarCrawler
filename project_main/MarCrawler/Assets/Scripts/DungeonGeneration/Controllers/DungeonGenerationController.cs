@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public class DungeonGenerationController {
 	
-	public Dungeon generateDungeon(int seed){
-		Random rand = new Random(seed);
+	public Dungeon generateDungeon(Random rand, int seed){
 
 		//LATER_PATCH: scegli tipo di dungeon
 
