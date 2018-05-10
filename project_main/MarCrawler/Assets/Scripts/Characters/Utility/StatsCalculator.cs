@@ -173,4 +173,3 @@ public static class StatsCalculator{
 		return new DiceStat (definition, rank);
 	}
 }
-
