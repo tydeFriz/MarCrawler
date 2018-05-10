@@ -63,3 +63,4 @@ project_main/MarCrawler/Temp/UnityLockfile
 # Unity temps
 project_main/MarCrawler/Temp/*
 *EditorInstance.json
+*.info
