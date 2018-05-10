@@ -76,6 +76,16 @@
 	public const int STARTING_POOL_SIZE = 20;
 	public const int STARTING_POOL_PICKABLE = 8;
 
+	public const int MAX_LEVEL = 10;
+
+	public const char S_RANK = 'S';
+	public const char A_RANK = 'A';
+	public const char B_RANK = 'B';
+	public const char C_RANK = 'C';
+	public const char D_RANK = 'D';
+	public const char E_RANK = 'E';
+	public const char F_RANK = 'F';
+
 	public const int TOTAL_CLASSES_NUMBER = 1;
 
 	public const int WARRIOR_CLASS = 1;

@@ -10,26 +10,84 @@ public abstract class Character {
 	public List<Upgrade> upgrades;
 
 	//stats
-	public int maxHp;
-	public int hp;
-	public int maxMp;
-	public int mp;
-	public int attackPower;
-	public int magicPower;
-	public int slashResistance;
-	public int bashResistance;
-	public int pierceResistance;
-	public int fireResistance;
-	public int iceResistance;
-	public int thunderResistance;
-	public int speed;
-	public int avoidance;
-	public int critChance;
+	protected IntStat maxHp;
+	protected int hp;
+	protected IntStat maxMp;
+	protected int mp;
+	protected DiceStat attackPower;
+	protected DiceStat magicPower;
+	protected DiceStat supportPower;
+	protected IntStat slashResistance;
+	protected IntStat bashResistance;
+	protected IntStat pierceResistance;
+	protected IntStat fireResistance;
+	protected IntStat iceResistance;
+	protected IntStat thunderResistance;
+	protected IntStat speed;
+	protected IntStat avoidance;
+	protected IntStat luck;
+	//constant stat
+	protected double critChance;
 
 	//combat
 	public Status status;
 	public List<Effect> effects;
 	public List<Buff> buffs;
 	public List<Debuff> debuffs;
+
+	public Character(){
+		this.status = null;
+		this.effects = new List<Effect>();
+		this.buffs = new List<Buff>();
+		this.debuffs = new List<Debuff>();
+
+		this.critChance = 10.0;
+	}
+
+	public int getStat(StatEnum stat){
+		//LATER_PATCH: appy upgrades, status, effects, buffs, debuffs
+		switch(stat){
+		case StatEnum.HP:
+			return maxHp.getByLevel(level);
+		case StatEnum.MP:
+			return maxMp.getByLevel(level);
+		case StatEnum.SLASH_RES:
+			return slashResistance.getByLevel(level);
+		case StatEnum.BASH_RES:
+			return bashResistance.getByLevel(level);
+		case StatEnum.PIERCE_RES:
+			return pierceResistance.getByLevel(level);
+		case StatEnum.FIRE_RES:
+			return fireResistance.getByLevel(level);
+		case StatEnum.ICE_RES:
+			return iceResistance.getByLevel(level);
+		case StatEnum.THUNDER_RES:
+			return thunderResistance.getByLevel(level);
+		case StatEnum.SPEED:
+			return speed.getByLevel(level);
+		case StatEnum.AVOIDANCE:
+			return avoidance.getByLevel(level);
+		case StatEnum.LUCK:
+			return luck.getByLevel(level);
+		default:
+			throw new InvalidStatException("cannot use stat as int: "+stat);
+		}
+
+	}
+
+	public Die getDie(StatEnum stat){
+		//LATER_PATCH: appy upgrades, status, effects, buffs, debuffs
+		switch(stat){
+		case StatEnum.ATTACK:
+			return attackPower.getByLevel(level);
+		case StatEnum.MAGIC:
+			return magicPower.getByLevel(level);
+		case StatEnum.SUPORT:
+			return supportPower.getByLevel(level);
+		default:
+			throw new InvalidStatException("cannot use stat as Die: "+stat);
+		}
+
+	}
 
 }
