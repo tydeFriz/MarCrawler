@@ -23,6 +23,8 @@ public class CharactersGenerationController {
 		character.exp = 0;
 		character.name = RandomNameGenerator.generateName(rand);
 
+		//LATER_PATCH: add yayBonus and mehNerf
+
 		return character;
 	}
 

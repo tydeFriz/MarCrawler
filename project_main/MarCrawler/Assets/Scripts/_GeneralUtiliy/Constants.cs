@@ -16,13 +16,15 @@
 	public const bool VALIDATE_ROOMS = false;
 	public const bool TEST_DUNGEON_GENERATION = false;
 
-	public const bool VALIDATE_CHARACTERS = true;
+	public const bool VALIDATE_CHARACTERS = false;
 	public const bool TEST_CHARACTERS_GENERATION = false;
+
+	public const bool TEST_DUNGEON_NAVIGATION = true;
 
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
-	/* 								DUNGEON GENERATION								*/
+	/* 									 DUNGEON	     							*/
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
@@ -86,12 +88,15 @@
 	public const char E_RANK = 'E';
 	public const char F_RANK = 'F';
 
-	public const int TOTAL_CLASSES_NUMBER = 1;
+	public const int TOTAL_CLASSES_NUMBER = 5;
 
-	public const int WARRIOR_CLASS = 1;
+	public const int ARCHER_CLASS = 1;
+	public const int GUARDIAN_CLASS = 2;
+	public const int MAGE_CLASS = 3;
+	public const int SHAMAN_CLASS = 4;
+	public const int WARRIOR_CLASS = 5;
 
 	public const int TOTAL_RACES_NUMBER = 1;
 
 	public const int HOOMAN_RACE = 1;
-
 }

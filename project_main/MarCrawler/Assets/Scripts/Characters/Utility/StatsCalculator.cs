@@ -161,18 +161,18 @@ public static class StatsCalculator{
 			definition[8] = new Die(6, new int[6]{4, 4, 5, 6, 6, 7});
 			definition[9] = new Die(6, new int[6]{4, 5, 5, 6, 7, 7});
 			break;
-		/*case Constants.C_RANK:
-			definition[0] = new Die(6, new int[6]{});
-			definition[1] = new Die(6, new int[6]{});
-			definition[2] = new Die(6, new int[6]{});
-			definition[3] = new Die(6, new int[6]{});
-			definition[4] = new Die(6, new int[6]{});
-			definition[5] = new Die(6, new int[6]{});
-			definition[6] = new Die(6, new int[6]{});
-			definition[7] = new Die(6, new int[6]{});
-			definition[8] = new Die(6, new int[6]{});
-			definition[9] = new Die(6, new int[6]{, , , , , 7});
-			break;*/
+		case Constants.C_RANK:
+			definition[0] = new Die(6, new int[6]{1, 1, 2, 3, 3, 4});
+			definition[1] = new Die(6, new int[6]{1, 2, 2, 3, 3, 4});
+			definition[2] = new Die(6, new int[6]{1, 2, 3, 3, 4, 4});
+			definition[3] = new Die(6, new int[6]{1, 2, 3, 4, 4, 5});
+			definition[4] = new Die(6, new int[6]{2, 3, 3, 4, 4, 5});
+			definition[5] = new Die(6, new int[6]{2, 3, 4, 4, 5, 5});
+			definition[6] = new Die(6, new int[6]{2, 3, 4, 5, 5, 6});
+			definition[7] = new Die(6, new int[6]{3, 4, 4, 5, 5, 6});
+			definition[8] = new Die(6, new int[6]{3, 4, 5, 5, 6, 6});
+			definition[9] = new Die(6, new int[6]{4, 4, 5, 5, 6, 7});
+			break;
 		case Constants.D_RANK:
 			definition[0] = new Die(6, new int[6]{0, 1, 1, 2, 3, 3});
 			definition[1] = new Die(6, new int[6]{1, 1, 2, 2, 3, 3});
@@ -195,7 +195,7 @@ public static class StatsCalculator{
 			definition[6] = new Die(6, new int[6]{1, 2, 3, 3, 4, 4});
 			definition[7] = new Die(6, new int[6]{1, 2, 3, 4, 4, 5});
 			definition[8] = new Die(6, new int[6]{2, 3, 3, 4, 4, 5});
-			definition[9] = new Die(6, new int[6]{2, 3, 3, 4, 5, 5});
+			definition[9] = new Die(6, new int[6]{2, 3, 4, 4, 5, 5});
 			break;
 		case Constants.F_RANK:
 			definition[0] = new Die(6, new int[6]{0, 0, 0, 1, 1, 1});
