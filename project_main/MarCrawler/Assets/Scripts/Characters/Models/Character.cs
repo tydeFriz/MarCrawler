@@ -26,22 +26,19 @@ public abstract class Character {
 	protected IntStat speed;
 	protected IntStat avoidance;
 	protected IntStat luck;
-	//constant stat
-	protected double critChance;
+	protected IntStat critChance;
 
 	//combat
-	public Status status;
 	public List<Effect> effects;
+	public Status status;
 	public List<Buff> buffs;
 	public List<Debuff> debuffs;
 
 	public Character(){
-		this.status = null;
 		this.effects = new List<Effect>();
+		this.status = null;
 		this.buffs = new List<Buff>();
 		this.debuffs = new List<Debuff>();
-
-		this.critChance = 10.0;
 	}
 
 	public int getStat(StatEnum stat){
@@ -65,6 +62,8 @@ public abstract class Character {
 			return thunderResistance.getByLevel(level);
 		case StatEnum.SPEED:
 			return speed.getByLevel(level);
+		case StatEnum.CRIT:
+			return critChance.getByLevel(level);
 		case StatEnum.AVOIDANCE:
 			return avoidance.getByLevel(level);
 		case StatEnum.LUCK:

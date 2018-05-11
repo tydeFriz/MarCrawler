@@ -12,7 +12,7 @@ public class IntStat : Stat{
 	}
 
 	public int getByLevel(int level){
-		return (_base + Convert.ToInt32(_increment * level));
+		return (_base + Convert.ToInt32(_increment * (level-1)));
 	}
 }
 
