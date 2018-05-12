@@ -62,12 +62,19 @@
 	public const char PATH_MARKER = '_';
 	public const char DEFAULT_PATH_MARKER = 'p';
 	public const char TEMP_EXPLORE_MARKER = 'F';
+	public const char ENTRANCE_MARKER = 'I';
+	public const char EXIT_MARKER = 'E';
 
 	public const bool STEP_X = true;
 	public const bool STEP_Y = false;
 
 	public const int TREASURE_SPAWN_PERIOD = 10;
 	public const int TREASURE_SPAWN_INCREMENTAL = 1;
+
+	public const int ENCOUNTER_MIN_INCREMENTAL = 10;
+	public const int ENCOUNTER_MAX_INCREMENTAL = 50;
+	public const int ENCOUNTER_COLOUR_TRIGGER = 5;
+
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/

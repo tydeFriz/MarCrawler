@@ -16,6 +16,34 @@ public class Dungeon{
 		this.grid = borderGrid(grid);
 	}
 
+	public  Coordinates getStartingPosition(){
+		return grid.find(Constants.ENTRANCE_MARKER);
+	}
+		
+	public  Coordinates getExitPosition(){
+		return grid.find(Constants.EXIT_MARKER);
+	}
+
+	public bool canWalk(Coordinates to){
+		return grid.isPath(to);
+	}
+
+	public Coordinates useDoor(Coordinates playerPosition, Coordinates doorPosition){
+		if (!grid.isDoor (doorPosition))
+			return playerPosition;
+		return grid.getOtherDoorSide (playerPosition, doorPosition);
+	}
+
+	public Treasure openTreasure(Coordinates position){
+		if (!grid.isTreasure (position))
+			return null;
+		foreach (Treasure t in treasures) {
+			if(position.Equals(t.position))
+				return t;
+		}
+		return null;
+	}
+
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
 	/* 									 PRIVATES									*/

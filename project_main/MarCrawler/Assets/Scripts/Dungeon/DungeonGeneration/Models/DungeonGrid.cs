@@ -35,6 +35,16 @@ public class DungeonGrid{
 		return true;
 	}
 
+	public Coordinates find(char target){
+		for(int x = 0; x < sizeX; x++){
+			for(int y = 0; y < sizeY; y++){
+				if (grid [x, y] == target)
+					return new Coordinates (x, y);
+			}
+		}
+		return null;
+	}
+
 	public void put(Coordinates point, char marker){
 		grid[point.x, point.y] = marker;
 	}
@@ -74,6 +84,15 @@ public class DungeonGrid{
 		return true;
 	}
 
+	public bool isPath(Coordinates point){
+		if (!isValidPoint(point))
+			return false;
+		if (grid [point.x, point.y] != Constants.PATH_MARKER)
+			return false;
+		return true;
+	}
+
+
 	public bool isForcedPath(Coordinates point){
 		if (!isValidPoint(point))
 			return false;
@@ -96,6 +115,12 @@ public class DungeonGrid{
 		if (grid [point.x, point.y] != Constants.TREASURE_MARKER)
 			return false;
 		return true;
+	}
+
+	public Coordinates getOtherDoorSide(Coordinates startingPosition, Coordinates doorPosition){
+		int directionX = doorPosition.x - startingPosition.x;
+		int directionY = doorPosition.y - startingPosition.y;
+		return new Coordinates (doorPosition.x + directionX, doorPosition.y + directionY);
 	}
 
 	public List<Coordinates> getCulDeSacs(){
@@ -215,6 +240,8 @@ public class DungeonGrid{
 				if(grid[i, j] == Constants.PATHABLE_MARKER)
 					grid[i, j] = Constants.WALL_MARKER;
 				if(grid[i, j] == Constants.DEFAULT_PATH_MARKER)
+					grid[i, j] = Constants.PATH_MARKER;
+				if(grid[i, j] == Constants.PSEUDO_ROOM_MARKER)
 					grid[i, j] = Constants.PATH_MARKER;
 			}
 		}
