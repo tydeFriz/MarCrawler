@@ -46,7 +46,7 @@ public class DungeonNavigationController{ //TODO
 		playerOrientation = direction;
 	}
 
-	public void  playerUseDoor(Coordinates doorPosition){
+	public void playerUseDoor(Coordinates doorPosition){
 		playerPosition = dungeon.useDoor(playerPosition, doorPosition);
 	}
 
