@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class DungeonNavigationController{ //TODO
+public class DungeonNavigationController{
 
 	Random rand;
 	Dungeon dungeon;
@@ -25,19 +25,7 @@ public class DungeonNavigationController{ //TODO
 
 		if (dungeon.canWalk (to)) {
 			playerPosition = to;
-			chanceCounter += (rand.Next () % Constants.ENCOUNTER_MAX_INCREMENTAL - Constants.ENCOUNTER_MIN_INCREMENTAL)
-				+ Constants.ENCOUNTER_MIN_INCREMENTAL;
-
-			if (chanceCounter >= 100) {
-				chanceCounter = 0;
-				colour++;
-			}
-
-			if (colour >= Constants.ENCOUNTER_COLOUR_TRIGGER) {
-				colour = 0;
-				inCombat = true;
-				//TODO: start combat
-			}
+			updateColour();
 		}
 
 	}
@@ -48,6 +36,7 @@ public class DungeonNavigationController{ //TODO
 
 	public void playerUseDoor(Coordinates doorPosition){
 		playerPosition = dungeon.useDoor(playerPosition, doorPosition);
+		updateColour();
 	}
 
 	public Treasure playerOpenTreasure(Coordinates treasurePosition){
@@ -56,6 +45,28 @@ public class DungeonNavigationController{ //TODO
 
 	public void aiTurn(){
 		//LATER_PATCH: \\REQUIRED IMPLEMENTATIONS: FOEs, AI
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 									 PRIVATES									*/
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
+	private void updateColour(){
+		chanceCounter += (rand.Next () % Constants.ENCOUNTER_MAX_INCREMENTAL - Constants.ENCOUNTER_MIN_INCREMENTAL)
+			+ Constants.ENCOUNTER_MIN_INCREMENTAL;
+
+		if (chanceCounter >= 100) {
+			chanceCounter = 0;
+			colour++;
+		}
+
+		if (colour >= Constants.ENCOUNTER_COLOUR_TRIGGER) {
+			colour = 0;
+			inCombat = true;
+			//TODO: start combat
+		}
 	}
 
 }

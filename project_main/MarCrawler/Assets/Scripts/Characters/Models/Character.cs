@@ -2,6 +2,7 @@
 
 public abstract class Character {
 
+	public string code;
 	public string name;
 	public int level;
 	public int exp;
@@ -35,10 +36,15 @@ public abstract class Character {
 	public List<Debuff> debuffs;
 
 	public Character(){
+		this.code = CodeGenerator.getCode();
 		this.effects = new List<Effect>();
 		this.status = null;
 		this.buffs = new List<Buff>();
 		this.debuffs = new List<Debuff>();
+	}
+
+	public string getIdentifier(){
+		return name + "_" + code;
 	}
 
 	public int getStat(StatEnum stat){

@@ -6,7 +6,6 @@
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
-
 	public const bool DEBUG_WRITE_CONSOLE = false;
 	public const bool DEBUG_WRITE_FILE = true;
 
@@ -21,6 +20,45 @@
 
 	public const bool TEST_DUNGEON_NAVIGATION = true;
 
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 									 GENERAL	     							*/
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
+	public const int CODES_LENGHT = 18;
+
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 								    CHARACTERS								    */
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
+	public const int STARTING_POOL_SIZE = 20;
+	public const int STARTING_POOL_PICKABLE = 8;
+
+	public const int MAX_NAME_LENGHT = 12;
+	public const int MAX_LEVEL = 10;
+
+	public const char S_RANK = 'S';
+	public const char A_RANK = 'A';
+	public const char B_RANK = 'B';
+	public const char C_RANK = 'C';
+	public const char D_RANK = 'D';
+	public const char E_RANK = 'E';
+	public const char F_RANK = 'F';
+
+	public const int TOTAL_CLASSES_NUMBER = 5;
+
+	public const int ARCHER_CLASS = 1;
+	public const int GUARDIAN_CLASS = 2;
+	public const int MAGE_CLASS = 3;
+	public const int SHAMAN_CLASS = 4;
+	public const int WARRIOR_CLASS = 5;
+
+	public const int TOTAL_RACES_NUMBER = 1;
+
+	public const int HOOMAN_RACE = 1;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
@@ -75,42 +113,21 @@
 	public const int ENCOUNTER_MAX_INCREMENTAL = 50;
 	public const int ENCOUNTER_COLOUR_TRIGGER = 5;
 
-
-	//////////////////////////////////////////////////////////////////////////////////
-	/*										|										*/
-	/* 								    CHARACTERS								    */
-	/*										|										*/
-	//////////////////////////////////////////////////////////////////////////////////
-
-	public const int STARTING_POOL_SIZE = 20;
-	public const int STARTING_POOL_PICKABLE = 8;
-
-	public const int MAX_LEVEL = 10;
-
-	public const char S_RANK = 'S';
-	public const char A_RANK = 'A';
-	public const char B_RANK = 'B';
-	public const char C_RANK = 'C';
-	public const char D_RANK = 'D';
-	public const char E_RANK = 'E';
-	public const char F_RANK = 'F';
-
-	public const int TOTAL_CLASSES_NUMBER = 5;
-
-	public const int ARCHER_CLASS = 1;
-	public const int GUARDIAN_CLASS = 2;
-	public const int MAGE_CLASS = 3;
-	public const int SHAMAN_CLASS = 4;
-	public const int WARRIOR_CLASS = 5;
-
-	public const int TOTAL_RACES_NUMBER = 1;
-
-	public const int HOOMAN_RACE = 1;
-
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
 	/* 								     QUESTS								        */
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
+
+
+
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 								     COMBAT								        */
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
+	public const short FRONT_ROW = 0;
+	public const short BACK_ROW = 1;
 
 }
