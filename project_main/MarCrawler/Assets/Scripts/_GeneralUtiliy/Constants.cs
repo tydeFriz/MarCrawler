@@ -88,7 +88,7 @@
 	public const int ROOM_7x7_COUNT = 2;
 	public const int ROOM_7x9_COUNT = 1;
 	public const int ROOM_7x11_COUNT = 2;
-	public const int ROOM_9x9_COUNT = 0;
+	public const int ROOM_9x9_COUNT = 1;
 	public const int ROOM_9x11_COUNT = 0;
 
 	public const char PSEUDO_ROOM_MARKER = ' ';

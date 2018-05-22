@@ -204,6 +204,12 @@ public static class DungeonDispatcher{
 			+2:
 			picked = new r_7x11_002(rotate);
 			break;
+		case(9*Constants.ROOM_SIZE_X_MAX_CARDINALITY*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)+
+			(9*Constants.ROOM_SIZE_Y_MAX_CARDINALITY*Constants.ROOM_NUMBER_MAX_CARDINALITY)
+			+1:
+			picked = new r_9x9_001(rotate);
+			break;
+
 		default:
 			throw new DungeonRoomNotAvailableException("invalid request. room id: "+id+" size: "+sizeX+"x"+sizeY);
 		}
