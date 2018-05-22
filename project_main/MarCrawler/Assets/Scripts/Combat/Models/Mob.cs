@@ -1,9 +1,8 @@
 ﻿
-public class Mob{
+public class Mob : Combatant{
 
-	string name;
 	int maxHp;
-	int hp;
+	int maxMp;
 
 	AIStrategy ai;
 

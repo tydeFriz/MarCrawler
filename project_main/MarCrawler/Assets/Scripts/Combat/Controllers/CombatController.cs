@@ -33,7 +33,9 @@ public class CombatController {
 		}
 	}
 
-
+	public void doAction(CombatAction action){
+		
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/

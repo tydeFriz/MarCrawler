@@ -130,4 +130,20 @@
 	public const short FRONT_ROW = 0;
 	public const short BACK_ROW = 1;
 
+
+	public const short SLASH = 1;
+	public const short BASH = 2;
+	public const short PIERCE = 3;
+	public const short FIRE = 1;
+	public const short ICE = 2;
+	public const short THUNDER = 3;
+/*
+	TODO: convert to classes
+	public const short ADD_BUFF_ACTION = 1;
+	public const short REMOVE_BUFF_ACTION = 1;
+	public const short ADD_DEBUFF_ACTION = 1;
+	public const short REMOVE_DEBUFF_ACTION = 1;
+	public const short ADD_EFFECT_ACTION = 1;
+	public const short REMOVE_EFFECT_ACTION = 1;
+*/
 }

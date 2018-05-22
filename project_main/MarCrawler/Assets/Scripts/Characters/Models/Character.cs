@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 
-public abstract class Character {
+public abstract class Character : Combatant{
 
 	public string code;
-	public string name;
 	public int level;
 	public int exp;
 	public Race race;
@@ -12,9 +11,7 @@ public abstract class Character {
 
 	//stats
 	protected IntStat maxHp;
-	protected int hp;
 	protected IntStat maxMp;
-	protected int mp;
 	protected DiceStat attackPower;
 	protected DiceStat magicPower;
 	protected DiceStat supportPower;
