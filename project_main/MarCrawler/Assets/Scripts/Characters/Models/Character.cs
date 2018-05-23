@@ -9,6 +9,12 @@ public abstract class Character : Combatant{
 	public Equip equip;
 	public List<Upgrade> upgrades;
 
+	//combat
+	public List<Effect> effects;
+	public Status status;
+	public List<Buff> buffs;
+	public List<Debuff> debuffs;
+
 	//stats
 	protected IntStat maxHp;
 	protected IntStat maxMp;
@@ -26,12 +32,6 @@ public abstract class Character : Combatant{
 	protected IntStat luck;
 	protected IntStat critChance;
 
-	//combat
-	public List<Effect> effects;
-	public Status status;
-	public List<Buff> buffs;
-	public List<Debuff> debuffs;
-
 	public Character(){
 		this.code = CodeGenerator.getCode();
 		this.effects = new List<Effect>();
@@ -44,7 +44,7 @@ public abstract class Character : Combatant{
 		return name + "_" + code;
 	}
 
-	public int getStat(StatEnum stat){
+	public override int getStat(StatEnum stat){
 		//LATER_PATCH: appy upgrades, status, effects, buffs, debuffs
 		switch(stat){
 		case StatEnum.HP:

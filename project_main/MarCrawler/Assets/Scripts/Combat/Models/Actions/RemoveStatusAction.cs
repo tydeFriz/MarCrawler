@@ -7,5 +7,7 @@ public class RemoveStatusAction : CombatAction{
 		this.status = status;
 	}
 
+	public StatusEnum getStatus(){
+		return status;
+	}
 }
-

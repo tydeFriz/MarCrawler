@@ -1,5 +1,4 @@
 ﻿
-
 public class Combat{
 
 	public Team team;
@@ -12,4 +11,3 @@ public class Combat{
 		this.state = CombatStateEnum.START;
 	}
 }
-

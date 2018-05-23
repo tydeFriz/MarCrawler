@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable CS0162
+
+using System;
 using UnityEngine;
 using System.IO;
 

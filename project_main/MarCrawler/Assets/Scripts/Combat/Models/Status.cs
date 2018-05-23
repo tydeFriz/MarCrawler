@@ -1,7 +1,6 @@
 ﻿
-public class Status {
+public abstract class Status {
 
 
 
 }
-

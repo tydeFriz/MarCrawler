@@ -137,12 +137,11 @@
 	public const short FIRE = 1;
 	public const short ICE = 2;
 	public const short THUNDER = 3;
+
+	public const int MIN_SPEED = 0;
+	public const int MAX_SPEED = 100;
 /*
 	TODO: convert to classes
-	public const short ADD_BUFF_ACTION = 1;
-	public const short REMOVE_BUFF_ACTION = 1;
-	public const short ADD_DEBUFF_ACTION = 1;
-	public const short REMOVE_DEBUFF_ACTION = 1;
 	public const short ADD_EFFECT_ACTION = 1;
 	public const short REMOVE_EFFECT_ACTION = 1;
 */
