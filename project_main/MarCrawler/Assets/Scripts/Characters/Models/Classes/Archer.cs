@@ -21,5 +21,9 @@ public class Archer: Character{
 
 	}
 
+	public override void addEffectsFromUpgrades(){
+		//LATER_PATCH: \\REQUIRED_IMPLEMENTATIONS: upgrades
+	}
+
 }
 

@@ -91,5 +91,7 @@ public abstract class Character : Combatant{
 		}
 
 	}
+		
+	public abstract void addEffectsFromUpgrades();
 
 }

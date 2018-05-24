@@ -1,6 +1,6 @@
 ﻿
 public enum StatusEnum{
 
-
+	DEAD
 
 }

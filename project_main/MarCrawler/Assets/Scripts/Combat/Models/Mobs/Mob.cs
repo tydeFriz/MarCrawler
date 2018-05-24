@@ -25,6 +25,8 @@ public abstract class Mob : Combatant{
 
 	AIStrategy ai;
 
+	protected Treasure loot;
+
 	/*LATER_PATCH: model, texture, animations...*/
 
 	public override int getStat(StatEnum stat){

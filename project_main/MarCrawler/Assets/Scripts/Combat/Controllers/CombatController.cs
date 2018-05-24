@@ -7,6 +7,7 @@ public class CombatController {
 	public Combat combat;
 	private PriorityQueue<CombatAction> actionsQueue = new PriorityQueue<CombatAction>(Constants.MIN_SPEED, Constants.MAX_SPEED);
 	private MobsController mobsController;
+	private EndConditionsEnum endCondition;
 
 	/// <summary>
 	/// use NULL as presetMobs if you want enemies to be generated randomly 
@@ -16,6 +17,7 @@ public class CombatController {
 		MobTeam mobs = presetMobs == null ? generateMobs(rand) : presetMobs;
 		this.combat = new Combat (team, mobs);
 		this.mobsController = new MobsController();
+		endCondition = EndConditionsEnum.NONE;
 	}
 
 	public CombatStateEnum NextState{
@@ -37,6 +39,12 @@ public class CombatController {
 	}
 
 	public bool doNextAction(){
+
+		if (endCondition != EndConditionsEnum.NONE) {
+			endCombat();
+			return false;
+		}
+
 		ActionsRunner.runAction(actionsQueue.Dequeue());
 
 		if (actionsQueue.Size > 0)
@@ -53,7 +61,13 @@ public class CombatController {
 	private MobTeam generateMobs(Random rand){
 		MobTeam team = new MobTeam();
 
-		//TODO \\REQUIRED IMPLEMENTATIONS: mobs
+		for(int i = rand.Next() % Constants.MAX_FRONT_MOBS + 1; i > 0; i++ ){
+			team.frontRow[i - 1] = MobsDispatcher.getFrontMobById(rand.Next() % Constants.FRONT_MOBS_COUNT);
+		}
+
+		for(int i = rand.Next() % (Constants.MAX_BACK_MOBS + 1); i > 0; i++ ){
+			team.backRow[i - 1] = MobsDispatcher.getBackMobById(rand.Next() % Constants.BACK_MOBS_COUNT);
+		}
 
 		return team;
 	}
@@ -69,8 +83,13 @@ public class CombatController {
 		case CombatStateEnum.OBSERVE:
 			return CombatStateEnum.PLAYER_PICK;
 		default:
-			throw new Exception(); //TODO: define exception
+			throw new InvalidCombatStateException();
 		}
+	}
+
+	private EndConditionsEnum endCombat(){
+		combat.team.clearAfterCombat();
+		return endCondition;
 	}
 
 }

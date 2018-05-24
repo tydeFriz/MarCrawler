@@ -1,12 +1,12 @@
 ﻿
 public class MobTeam{
 
-	Mob[] frontRow;
-	Mob[] BackRow;
+	public Mob[] frontRow;
+	public Mob[] backRow;
 
 	public MobTeam(){
-		this.frontRow = new Mob[4];
-		this.BackRow = new Mob[4];
+		this.frontRow = new Mob[Constants.MAX_FRONT_MOBS];
+		this.backRow = new Mob[Constants.MAX_BACK_MOBS];
 	}
 
 }

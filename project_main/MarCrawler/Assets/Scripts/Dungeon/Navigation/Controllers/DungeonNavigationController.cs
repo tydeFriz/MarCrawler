@@ -20,6 +20,10 @@ public class DungeonNavigationController{
 		this.colour = 0;
 		this.chanceCounter = 0;
 	}
+
+	public Team getTeam(){
+		return team;
+	}
 		
 	public void playerMove(Coordinates to){
 
@@ -65,7 +69,7 @@ public class DungeonNavigationController{
 		if (colour >= Constants.ENCOUNTER_COLOUR_TRIGGER) {
 			colour = 0;
 			inCombat = true;
-			//TODO: start combat
+			GameStateController.startCombat();
 		}
 	}
 

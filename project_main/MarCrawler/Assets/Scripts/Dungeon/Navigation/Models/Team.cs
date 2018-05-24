@@ -52,4 +52,15 @@ public class Team{
 		return result;
 	}
 
+	public void clearAfterCombat(){
+
+		foreach (KeyValuePair<TeamPositionEnum, Character> pair in characters) {
+			Character c = pair.Value;
+			c.buffs.Clear();
+			c.debuffs.Clear();
+			c.effects.Clear();
+		}
+
+	}
+
 }

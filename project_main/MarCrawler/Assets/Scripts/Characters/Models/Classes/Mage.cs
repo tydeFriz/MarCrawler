@@ -20,6 +20,10 @@ public class Mage : Character{
 		this.luck = (IntStat) StatsCalculator.getStat(				StatEnum.LUCK, 			Constants.B_RANK);
 	
 	}
-	
+
+	public override void addEffectsFromUpgrades(){
+		//LATER_PATCH: \\REQUIRED_IMPLEMENTATIONS: upgrades
+	}
+
 }
 
