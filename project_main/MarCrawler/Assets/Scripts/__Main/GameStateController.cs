@@ -20,10 +20,11 @@ public static class GameStateController{
 	}
 
 	public static void startQuest(Quest quest){
-
+		//LATER_PATCH: quest adds utility character \\REQUIRED_IMPLEMENTATIONS: utility characters
+		//LATER_PATCH: quest dictates dungeon type and other things
 		DungeonGenerationController dgc = new DungeonGenerationController();
 		int seed = rand.Next();
-		dungeonNavigationController = new DungeonNavigationController(dgc.generateDungeon(new Random(seed), seed) , guildGontroller.team);
+		dungeonNavigationController = new DungeonNavigationController(dgc.generateDungeon(new Random(seed), seed) , guildGontroller.team, quest);
 
 	}
 

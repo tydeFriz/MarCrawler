@@ -10,7 +10,8 @@ public class Die{
 		this.size = size;
 	}
 
-	public int roll (Random rand){
+	public int roll (){
+		Random rand = new Random();
 		return faces[rand.Next() % size];
 	}
 

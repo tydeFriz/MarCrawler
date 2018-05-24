@@ -34,4 +34,19 @@ public class Mob_Spitling : Mob{
 		return new Treasure(null, items, 4+(rand.Next() % 2));	
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 									 PRIVATES									*/
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
+	private ActionSet getActionSet(){
+		ActionSet result = new ActionSet();
+
+		result.add(new PhysicalAttackAction(new Die[1]{
+			new Die(6, new int[6]{1, 1, 2, 2, 3, 4})
+		}, PhysicalAttackTypesEnum.PIERCE));
+
+		return result;
+	}
 }

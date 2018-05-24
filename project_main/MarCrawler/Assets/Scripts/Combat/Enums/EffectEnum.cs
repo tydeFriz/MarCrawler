@@ -1,5 +1,5 @@
 ﻿
-public class EffectEnum{
+public enum EffectEnum{
 
 
 

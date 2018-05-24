@@ -5,7 +5,7 @@ public enum StatEnum{
 	MP,
 	ATTACK,
 	MAGIC,
-	SUPORT,
+	SUPPORT,
 	SLASH_RES,
 	BASH_RES,
 	PIERCE_RES,

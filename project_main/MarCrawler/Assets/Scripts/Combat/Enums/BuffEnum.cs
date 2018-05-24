@@ -1,5 +1,5 @@
 ﻿
-public class BuffEnum{
+public enum BuffEnum{
 
 
 

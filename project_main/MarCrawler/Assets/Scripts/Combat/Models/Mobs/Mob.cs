@@ -23,7 +23,8 @@ public abstract class Mob : Combatant{
 	protected int luck;
 	protected int critChance;
 
-	AIStrategy ai;
+	protected AIStrategy ai;
+	protected ActionSet possibleActions;
 
 	protected Treasure loot;
 
@@ -61,8 +62,13 @@ public abstract class Mob : Combatant{
 		}
 	}
 
-	//TODO: set of possible actions
+	public override Die getDie(StatEnum stat){
+		return null;	
+	}
 
-	//TODO: getNextAction
+	public List<CombatAction> getNextMove(Combat context){
+		return ai.getNextMove(context, this);
+	}
+	//TODO: set of possible actions
 
 }

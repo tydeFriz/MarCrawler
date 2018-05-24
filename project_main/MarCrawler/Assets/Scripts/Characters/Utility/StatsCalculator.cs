@@ -9,7 +9,7 @@ public static class StatsCalculator{
 			return getResourceStat(rank); 
 		case StatEnum.ATTACK:
 		case StatEnum.MAGIC:
-		case StatEnum.SUPORT:
+		case StatEnum.SUPPORT:
 			return getDiceStat(rank);
 		case StatEnum.SLASH_RES:
 		case StatEnum.BASH_RES:

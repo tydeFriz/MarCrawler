@@ -1,13 +1,12 @@
 ﻿
 /// <summary>
-/// NORTH: y++, EAST: x++
+/// NORTH: y--, EAST: x++
 /// </summary>
 public enum OrientationEnum{
 
-	NORTH,	//y++
+	NORTH,	//y--
 	WEST,	//x--
-	SOUTH,	//y--
+	SOUTH,	//y++
 	EAST	//x++
 	
 }
-

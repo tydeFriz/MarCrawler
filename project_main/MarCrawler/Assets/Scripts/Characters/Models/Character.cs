@@ -77,14 +77,14 @@ public abstract class Character : Combatant{
 
 	}
 
-	public Die getDie(StatEnum stat){
+	public override Die getDie(StatEnum stat){
 		//LATER_PATCH: appy upgrades, status, effects, buffs, debuffs
 		switch(stat){
 		case StatEnum.ATTACK:
 			return attackPower.getByLevel(level);
 		case StatEnum.MAGIC:
 			return magicPower.getByLevel(level);
-		case StatEnum.SUPORT:
+		case StatEnum.SUPPORT:
 			return supportPower.getByLevel(level);
 		default:
 			throw new InvalidStatException("cannot use stat as Die: "+stat);

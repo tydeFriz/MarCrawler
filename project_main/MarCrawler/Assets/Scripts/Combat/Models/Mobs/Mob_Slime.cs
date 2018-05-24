@@ -23,6 +23,11 @@ public class Mob_Slime : Mob{
 		critChance = 9 + (rand.Next() % 7);	//9 -> 15
 
 		loot = generateLoot(rand);
+
+		possibleActions = getActionSet();
+
+		//TODO: declare ai
+		// ai = new SlimeAIStrategy();
 	}
 
 	private Treasure generateLoot(Random rand){
@@ -32,6 +37,23 @@ public class Mob_Slime : Mob{
 		//LATER_PATCH: add items from lootTable
 
 		return new Treasure(null, items, 3+(rand.Next() % 3));	
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 									 PRIVATES									*/
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
+	private ActionSet getActionSet(){
+		ActionSet result = new ActionSet();
+
+		result.add(new PhysicalAttackAction(new Die[2]{
+			new Die(6, new int[6]{0, 0, 1, 1, 1, 1}),
+			new Die(6, new int[6]{0, 0, 0, 1, 2, 3}),
+		}, PhysicalAttackTypesEnum.BASH));
+
+		return result;
 	}
 
 }

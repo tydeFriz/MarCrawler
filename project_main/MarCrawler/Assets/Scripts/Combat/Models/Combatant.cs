@@ -6,5 +6,5 @@ public abstract class Combatant{
 	public int mp;
 
 	public abstract int getStat(StatEnum stat);
-
+	public abstract Die getDie(StatEnum stat);
 }

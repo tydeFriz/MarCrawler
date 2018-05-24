@@ -142,19 +142,10 @@
 	public const short FRONT_ROW = 0;
 	public const short BACK_ROW = 1;
 
-
-	public const short SLASH = 1;
-	public const short BASH = 2;
-	public const short PIERCE = 3;
-	public const short FIRE = 1;
-	public const short ICE = 2;
-	public const short THUNDER = 3;
-
 	public const int MIN_SPEED = 0;
 	public const int MAX_SPEED = 100;
-/*
-	TODO: convert to classes
-	public const short ADD_EFFECT_ACTION = 1;
-	public const short REMOVE_EFFECT_ACTION = 1;
-*/
+
+	public const double PHYSICAL_CRIT_MULTIPLIER = 1.5;
+	public const double MAGIC_CRIT_MULTIPLIER = 1.8;
+	public const double SUPPORT_CRIT_MULTIPLIER = 2.0;
 }

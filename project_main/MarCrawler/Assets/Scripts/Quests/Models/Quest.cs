@@ -5,6 +5,6 @@ public abstract class Quest{
 	public string name;
 	public string description;
 	public Treasure reward;
-	Character helper;
-
+	public Character helper;
+	//TODO: public Goal goal;
 }
