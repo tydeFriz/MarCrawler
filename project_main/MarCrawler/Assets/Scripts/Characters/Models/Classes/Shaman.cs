@@ -2,7 +2,7 @@
 public class Shaman : Character{
 
 	public Shaman() : base(){
-		//			STAT					RANK
+																//			STAT					RANK
 		this.maxHp = (IntStat) StatsCalculator.getStat(				StatEnum.HP, 			Constants.C_RANK);
 		this.maxMp = (IntStat) StatsCalculator.getStat(				StatEnum.MP, 			Constants.C_RANK);
 		this.attackPower = (DiceStat) StatsCalculator.getStat(		StatEnum.ATTACK, 		Constants.C_RANK);

@@ -30,6 +30,12 @@ public class Mob_Slime : Mob{
 		// ai = new SlimeAIStrategy();
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////
+	/*										|										*/
+	/* 									 PRIVATES									*/
+	/*										|										*/
+	//////////////////////////////////////////////////////////////////////////////////
+
 	private Treasure generateLoot(Random rand){
 
 		List<Item> items = new List<Item>();
@@ -38,12 +44,6 @@ public class Mob_Slime : Mob{
 
 		return new Treasure(null, items, 3+(rand.Next() % 3));	
 	}
-
-	//////////////////////////////////////////////////////////////////////////////////
-	/*										|										*/
-	/* 									 PRIVATES									*/
-	/*										|										*/
-	//////////////////////////////////////////////////////////////////////////////////
 
 	private ActionSet getActionSet(){
 		ActionSet result = new ActionSet();

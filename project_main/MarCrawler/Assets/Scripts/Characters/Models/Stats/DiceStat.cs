@@ -12,4 +12,3 @@ public class DiceStat : Stat{
 		return definition[level];
 	}
 }
-

@@ -2,7 +2,7 @@
 public class Archer: Character{
 
 	public Archer() : base(){
-		//			STAT					RANK
+																//			STAT					RANK
 		this.maxHp = (IntStat) StatsCalculator.getStat(				StatEnum.HP, 			Constants.D_RANK);
 		this.maxMp = (IntStat) StatsCalculator.getStat(				StatEnum.MP, 			Constants.C_RANK);
 		this.attackPower = (DiceStat) StatsCalculator.getStat(		StatEnum.ATTACK, 		Constants.B_RANK);

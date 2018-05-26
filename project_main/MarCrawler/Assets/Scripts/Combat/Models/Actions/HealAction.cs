@@ -16,11 +16,14 @@ public class HealAction : CombatAction{
 			damage.Add(supportDie);
 
 		Die[] rolledDice = new Die[damage.Count];
+		int[] rollResults = new int[damage.Count];
 		int totalDamage = 0;
 		int i = 0;
 		foreach (Die d in damage) {
-			totalDamage += d.roll();
+			int rollResult = d.roll();
+			totalDamage += rollResult;
 			rolledDice[i] = d;
+			rollResults [i] = rollResult;
 			i++;
 		}
 
@@ -33,7 +36,7 @@ public class HealAction : CombatAction{
 
 		totalDamage = totalDamage > 0 ? totalDamage : 0;
 
-		DamageResult result = new DamageResult(false, rolledDice, totalDamage, crit);
+		DamageResult result = new DamageResult(false, rolledDice, rollResults, totalDamage, crit);
 
 		return result;
 	}

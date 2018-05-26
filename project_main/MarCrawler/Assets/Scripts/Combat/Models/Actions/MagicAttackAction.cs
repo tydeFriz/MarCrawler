@@ -23,11 +23,14 @@ public class MagicAttackAction : CombatAction{
 		int resistance = target.getStat(TypeToResistanceTranslator.translate(type));
 
 		Die[] rolledDice = new Die[damage.Count];
+		int[] rollResults = new int[damage.Count];
 		int totalDamage = 0;
 		int i = 0;
 		foreach (Die d in damage) {
-			totalDamage += d.roll();
+			int rollResult = d.roll();
+			totalDamage += rollResult;
 			rolledDice[i] = d;
+			rollResults [i] = rollResult;
 			i++;
 		}
 			
@@ -40,7 +43,7 @@ public class MagicAttackAction : CombatAction{
 
 		totalDamage = totalDamage > 0 ? totalDamage : 0;
 
-		DamageResult result = new DamageResult(avoided, rolledDice, totalDamage, crit);
+		DamageResult result = new DamageResult(avoided, rolledDice, rollResults, totalDamage, crit);
 
 		return result;
 	}

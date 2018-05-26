@@ -2,7 +2,7 @@
 public class Mage : Character{
 
 	public Mage() : base(){
-		//			STAT					RANK
+																//			STAT					RANK
 		this.maxHp = (IntStat) StatsCalculator.getStat(				StatEnum.HP, 			Constants.E_RANK);
 		this.maxMp = (IntStat) StatsCalculator.getStat(				StatEnum.MP, 			Constants.B_RANK);
 		this.attackPower = (DiceStat) StatsCalculator.getStat(		StatEnum.ATTACK, 		Constants.E_RANK);

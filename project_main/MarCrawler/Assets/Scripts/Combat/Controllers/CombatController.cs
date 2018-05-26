@@ -87,9 +87,20 @@ public class CombatController {
 		}
 	}
 
-	private EndConditionsEnum endCombat(){
+	private void endCombat(){
 		combat.team.clearAfterCombat();
-		return endCondition;
+
+		switch (endCondition) {
+		case EndConditionsEnum.ESCAPE:
+			GameStateController.endCombatRun();
+			break;
+		case EndConditionsEnum.WIN:
+			GameStateController.endCombatVictory();
+			break;
+		case EndConditionsEnum.LOSS:
+			GameStateController.endCombatLoss();
+			break;
+		}
 	}
 
 }

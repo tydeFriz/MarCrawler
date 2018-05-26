@@ -2,7 +2,7 @@
 public class Guardian : Character{
 
 	public Guardian() : base(){
-		//			STAT					RANK
+																//			STAT					RANK
 		this.maxHp = (IntStat) StatsCalculator.getStat(				StatEnum.HP, 			Constants.A_RANK);
 		this.maxMp = (IntStat) StatsCalculator.getStat(				StatEnum.MP, 			Constants.D_RANK);
 		this.attackPower = (DiceStat) StatsCalculator.getStat(		StatEnum.ATTACK, 		Constants.C_RANK);
