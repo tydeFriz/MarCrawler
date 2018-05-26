@@ -64,3 +64,9 @@ project_main/MarCrawler/Temp/UnityLockfile
 project_main/MarCrawler/Temp/*
 *EditorInstance.json
 *.info
+
+# Models and Textures
+*.blend
+*.png
+*.jpg
+*.psd
