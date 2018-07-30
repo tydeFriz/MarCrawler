@@ -9,16 +9,11 @@
 	public const bool DEBUG_WRITE_CONSOLE = false;
 	public const bool DEBUG_WRITE_FILE = true;
 
-	public const bool TEST_NAME_GENERATION = false;
+	public const bool TEST_NAME_GENERATION = true;
 
-	public const bool VALIDATE_LAYOUTS = false;
-	public const bool VALIDATE_ROOMS = false;
-	public const bool TEST_DUNGEON_GENERATION = false;
-
-	public const bool VALIDATE_CHARACTERS = false;
-	public const bool TEST_CHARACTERS_GENERATION = false;
-
-	public const bool TEST_DUNGEON_NAVIGATION = true;
+	public const bool VALIDATE_LAYOUTS = true;
+	public const bool VALIDATE_ROOMS = true;
+	public const bool TEST_DUNGEON_GENERATION = true;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
@@ -34,31 +29,7 @@
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
-	public const int STARTING_POOL_SIZE = 20;
-	public const int STARTING_POOL_PICKABLE = 8;
 
-	public const int MAX_NAME_LENGHT = 12;
-	public const int MAX_LEVEL = 10;
-
-	public const char S_RANK = 'S';
-	public const char A_RANK = 'A';
-	public const char B_RANK = 'B';
-	public const char C_RANK = 'C';
-	public const char D_RANK = 'D';
-	public const char E_RANK = 'E';
-	public const char F_RANK = 'F';
-
-	public const int TOTAL_CLASSES_NUMBER = 5;
-
-	public const int ARCHER_CLASS = 1;
-	public const int GUARDIAN_CLASS = 2;
-	public const int MAGE_CLASS = 3;
-	public const int SHAMAN_CLASS = 4;
-	public const int WARRIOR_CLASS = 5;
-
-	public const int TOTAL_RACES_NUMBER = 1;
-
-	public const int HOOMAN_RACE = 1;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
@@ -127,11 +98,7 @@
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
-	public const int FRONT_MOBS_COUNT = 1;
-	public const int BACK_MOBS_COUNT = 1;
 
-	public const int MAX_FRONT_MOBS = 4;
-	public const int MAX_BACK_MOBS = 4;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	/*										|										*/
@@ -139,13 +106,6 @@
 	/*										|										*/
 	//////////////////////////////////////////////////////////////////////////////////
 
-	public const short FRONT_ROW = 0;
-	public const short BACK_ROW = 1;
 
-	public const int MIN_SPEED = 0;
-	public const int MAX_SPEED = 100;
 
-	public const double PHYSICAL_CRIT_MULTIPLIER = 1.5;
-	public const double MAGIC_CRIT_MULTIPLIER = 1.8;
-	public const double SUPPORT_CRIT_MULTIPLIER = 2.0;
 }

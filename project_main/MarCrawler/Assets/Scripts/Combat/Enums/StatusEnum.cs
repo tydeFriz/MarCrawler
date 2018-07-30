@@ -1,6 +1,0 @@
-﻿
-public enum StatusEnum{
-
-	DEAD
-
-}
