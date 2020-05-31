@@ -1,0 +1,99 @@
+weapon:
+	-sword (light, mid)
+	-lance (light, mid)
+	-bow (all)
+
+armor:
+	-light
+	-mid
+
+jewels:
+	-offense x1
+	-defense x1
+	-utility x1
+	
+stats:
+	HP: 14 + 5
+	MP: 14 + 5
+	attack: 1 + 0.3
+	speed: 7 + 0.4
+
+abilities:
+	-quickshot
+		require: bow
+		5 MP
+		target 1
+		priority +2
+		weapon's dice
+	-flank shot
+		require: bow
+		10 MP
+		target 1
+		weapon's dice
+		applies BLEED 1
+	-volley
+		require: bow
+		15 MP
+		target line
+		2x pierce(mid)
+	-flurry
+		require: melee x2
+		20 MP
+		target 1
+		attack with main weapon twice then with secondary weapon once
+	-disengage
+		require: front row, status
+		11 MP
+		target 1
+		1x weapon(mid)
+		move to back row if a slot is empty. remove random status from the Ranger
+	-provisions
+		require: single use
+		10 MP
+		target all ally
+		1x heal(low), 1x mana(low)
+	-trace
+		3 MP
+		target 1
+		applies TRAP 3
+	-sense danger
+		navigation
+		3 MP
+		duration: 50 steps
+		when a dungeon trap is activated, throw chance(high) with c = prevent trap activation
+	-scavenge
+		navigation
+		3 MP
+		duration: 30 steps
+		trace shortest path to nearest food source (max 20 squares)
+	-hunt
+		navigation
+		5 MP
+		duration: 40 steps
+		increase encounter chance. will cast volley when battle begins
+
+talents:
+	-gathering will give one additional item
+	-all alive party members recover 1 HP x level when a battle is won
+	-all abilities and attacks get 1x almighty(mid) if the target has TRAP
+	-all abilities get [priority +1] during the first turn of each battle
+	-quickshot gets 1x pierce(high)
+	-quickshot becomes [2 MP]
+	-quickshot removes TRAP X and applies DEATH X if the target has TRAP
+	-flank shot becomes [6 MP]
+	-flank shot becomes [target line]
+	-flank shot now applies BLEED 2
+	-volley becomes [target all]
+	-volley gets 2x pierce(high) and becomes [20 MP]
+	-flurry becomes [15 MP]
+	-flurry will now attack twice with secondary weapon
+	-disengage becomes [target line front]
+	-disengage becomes [7 MP]
+	-provisions gets 1x heal(low), 1x mana(low)
+	-provisions gets 1x heal(low), 1x mana(low)
+	-trace becomes [target 2]
+	-sense danger becomes [duration: 100 steps]
+	-scavenge will avoid locked doors
+	-if two melee weapons are equipped, hunt will cast flurry instead
+	-all abilities and attacks get 1x almighty(low) while hunt is active
+	-hunt will apply TRAP 1 when battle begins

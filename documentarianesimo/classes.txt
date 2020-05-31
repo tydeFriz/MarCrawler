@@ -1,0 +1,22 @@
+DONE	CLASS			WHAT
+[x]	bard			buff, debuff, lore
+[]	bloodlord		wpn dmg, dots, debuff
+[]	bugger			summon, dots, debuff
+[]	cartomancer		lore, navigation, buff
+[]	dancer			buff, misdirection, evasion
+[]	druid			shapeshift (tank, survival / wpn dmg, survival / heal, buff)
+[x]	duelist			wpn dmg, misdirection, evasion
+[x]	elemancer		elem dmg, dots, aoe
+[]	explorer		navigation, survival, evasion
+[]	joker			wpn dmg, evasion, dice alteration
+[]	paladin			tank, heal, wpn dmg
+[x]	priest			heal, buff, lore
+[x]	protector		tank, buff, cc
+[]	randomancer		major dice alteration
+[x]	ranger			wpn dmg, survival, navigation
+[]	rogue			wpn dmg, navigation, evasion
+[x]	shadowmancer	debuff, dots, cc
+[]	summoner		summon, buff, misdirection
+[x]	warrior			wpn dmg, aoe, cc
+[]	weirdo			misdirection, cc, survival
+[]	witch doctor	heal, debuff, cc

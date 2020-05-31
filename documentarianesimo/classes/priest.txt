@@ -1,0 +1,111 @@
+weapon:
+	-mace (light, mid)
+	-book
+
+armor:
+	-light
+	-mid
+
+jewels:
+	-utility x1
+	-defense x1
+	-augment x1
+	
+stats:
+	HP: 8 + 4
+	MP: 25 + 8
+	attack: -3 + 0.1
+	speed: 4 + 0.1
+
+abilities:
+	-heal
+		6 MP
+		target ally
+		2x heal(mid)
+	-mass heal
+		require: book
+		25 MP
+		target all ally
+		2x heal(low)
+	-illumination
+		18 MP
+		target line ally
+		applies buff
+			illumination: {
+				duration: 3
+				at the end of the turn restore 1x heal(low)
+			}
+	-revive
+		require: book
+		20 MP
+		target 1 ally
+		target becomes alive with 5 HP
+	-purify
+		14 MP
+		target line ally
+		applies buff
+			purify: {
+				duration: 3
+				at the end of the turn all debuffs get duration -1
+			}
+	-restore
+		20 MP
+		target line ally
+		applies buff
+			restore: {
+				duration: 3
+				at the end of the turn all stati get X -1
+			}
+	-freedom
+		15 MP
+		target line ally
+		applies buff
+			freedom: {
+				duration: 3
+				charges: 2
+				when getting a debuff, remove a charge and the debuff
+			}
+	-sacred fire
+		require: book
+		14 MP
+		target 1
+		weapon's dice, 1x almighty(mid)
+	-holy smash
+		require: mace
+		8 MP
+		target 1
+		weapon's dice
+	-divine blows
+		10 MP
+		target ally line
+		apply buff
+			divine blows: {
+				duration: 2
+				weapon gets 1x almighty(mid)
+			}
+
+talents:
+	-at the end of the turn, remove the status with lowest X
+	-at the end of the turn, all debuffs get duration -1
+	-when battle starts, apply illumination buff to front row allies
+	-when battle starts, apply freedom buff to front row allies
+	-when battle starts, apply divine blows buff to front row allies
+	-weapon gets 1x almighty(mid) while a mace is equipped
+	-heal and mass heal get 2x crit(mid)
+	-heal and mass heal get 1x heal(high)
+	-heal gets 1x crit(high)
+	-mass heal becomes [20 MP]
+	-illumination becomes [14 MP]
+	-illumination buff becomes [at the end of the turn restore 1x heal(high)]
+	-revive becomes [14 MP]
+	-revive becomes [target becomes alive with half HP]
+	-purify becomes [11 MP]
+	-restore becomes [15 MP]
+	-freedom becomes [11 MP]
+	-freedom becomes [charges: 4]
+	-sacred fire becomes [target 2]
+	-sacred fire becomes [9 MP]
+	-holy smash becomes [5 MP]
+	-using holy smash restores 10 MP
+	-divine blows becomes [7 MP]
+	-divine blows buff becomes [weapon gets 1x almighty(high)]

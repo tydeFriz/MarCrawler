@@ -1,0 +1,100 @@
+weapon:
+	-sword(light, mid)
+	-lance(light, mid)
+
+armor:
+	-light
+	-mid
+
+jewels:
+	-offense x2 
+	-utility x1
+	
+stats:
+	HP: 15 + 5
+	MP: 16 + 5
+	attack: 4 + 0.5
+	speed: 6 + 0.3
+
+abilities:
+	-step with style
+		4 MP
+		target 1
+		weapon's dice, 1x wepon(mid)
+	-step in the crowd
+		15 MP
+		target all
+		2x weapon(low)
+	-astonishing step
+		8 MP
+		target all
+		applies CONFUSION 2
+	-step after step
+		10 MP
+		target 1
+		weapon's dice, 2x pierce(high)
+	-sword step
+		5 MP
+		target 1
+		weapon's dice, 1x slash(mid)
+	-lance step
+		5 MP
+		target 1
+		weapon's dice, 2x pierce(mid)
+	-deflecting step
+		7 MP
+		target 1
+		applies debuff
+			deflected: {
+				duration: 1
+				one action target becomes a random ally
+			}
+		1x weapon(mid)
+	-blemish
+		5 MP
+		target 1 ally
+		applies MARKED 1
+	-dancing frenzy
+		1 MP
+		target self
+		applies buff
+			frenzy: {
+				duration: 2
+				grants 1x evasion(mid)
+				weapon gets 1x crit(mid)
+			}
+	-preemptive step
+		7 MP
+		target self
+		grants 1x evasion(mid) until the end of turn
+		counterattacks all evaded attacks and abilities until the end of turn
+
+talents:
+	-weapon gets 1x weapon(mid)
+	-weapon gets 2x crit(low)
+	-all abilities grant 2x evasion(low) to the caster until the end of the turn
+	-cast dancing frenzy when battle begins
+	-all abilities apply debuff
+		careless: {
+			duration: 2
+			all attacks and abilities get 1x chance(mid) with c = target becomes a random entity
+		}
+	-step with style gets 2x crit(low)
+	-step with style becomes [2 MP] 
+	-step in the crowd becomes [10 MP]
+	-step in the crowd gets 1x weapon(high)
+	-astonishing step becomes [5 MP]
+	-astonishing step now applies CONFUSION 3
+	-step after step moves caster to the front row before activation
+	-step after step moves caster to the back row after activation
+	-sword step becomes [target line]
+	-sword step gets 1x crit(high)
+	-lance step becomes [target 2]
+	-lance step gets 1x pierce(high)
+	-deflecting step's debuff becomes [all action targets become random allies]
+	-deflecting step gets 2x weapon(high)
+	-blemish now applies MARKED 2
+	-dancing frenzy's buff also grants 2x evasion(low)
+	-dancing frenzy's buff becomes [duration: 4]
+	-preemptive step also grants 2x evasion(low)
+	-preemptive step's counterattacks get 1x pierce(mid)

@@ -1,0 +1,86 @@
+weapon:
+	-blade (light)
+	-mace (light)
+	-book
+
+armor:
+	-light
+
+jewels:
+	-offense x2
+	-utility x1
+	
+stats:
+	HP: 6 + 3
+	MP: 22 + 7
+	attack: 1 + 0.2
+	speed: 5 + 0.3
+
+abilities:
+	-fireball
+		3 MP
+		target 1
+		2x fire(low), 1x fire(mid)
+	-firewind
+		12 MP
+		target line
+		3x fire(low)
+	-burn
+		4 MP
+		target 1
+		applies BURN 2
+	-ice lance
+		3 MP
+		target 1
+		2x ice(low), 1x ice(mid)
+	-hail
+		12 MP
+		target line
+		3x ice(low)
+	-freeze
+		4 MP
+		target 1
+		applies FREEZE 1
+	-lightning
+		3 MP
+		target 1
+		2x thunder(low), 1x thunder(mid)
+	-thunderstorm
+		12 MP
+		target line
+		3x thunder(low)
+	-shock
+		4 MP
+		target 1
+		applies SHOCK 2
+	-desperate cut
+		require: blade
+		1 MP
+		target 1
+		1x slash(low)
+		
+talents:
+	-fireball and firewind get 1x fire(high)
+	-fireball and firewind applies BURN 1
+	-firewind becomes [target all]
+	-burn now applies BURN 3
+	-burn becomes [target 2]
+	-ice lance and hail get 1x ice(high)
+	-ice lance and hail applies CHILL 2
+	-freeze now applies FREEZE 2
+	-freeze becomes [target 2]
+	-hail becomes [target all]
+	-lightning and thunderstorm get 1x thunder(high)
+	-lightning and thunderstorm applies SHOCK 1
+	-thunderstorm becomes [target all]
+	-shock now applies SHOCK 3
+	-shock becomes [target 2]
+	-fireball, ice lance and lightning get 2x crit(low)
+	-firewind, hail and thunderstorm get 2x magic(low)
+	-firewind, hail and thunderstorm become [9 MP]
+	-when you kill an enemy, restore 5 MP
+	-when you kill an enemy with fireball, cast ice lance on a random target
+	-when you kill an enemy with ice lance, cast lightning on a random target
+	-when you kill an enemy with lightning, cast fireball on a random target
+	-when you kill an enemy with desperate cut, restore 20 MP
+	-desperate cut now throws weapon's dice

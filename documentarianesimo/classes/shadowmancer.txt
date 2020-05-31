@@ -1,0 +1,112 @@
+weapon:
+	-book
+	-blade(light)
+
+armor:
+	-light
+	-mid
+
+jewels:
+	-utility x2
+	-augment x1
+	
+stats:
+	HP: 8 + 4
+	MP: 18 + 6
+	attack: -1
+	speed: 3 + 0.1
+
+abilities:
+	-curse
+		5 MP
+		target 1
+		applies debuff
+			curse: {
+				duration: 3
+				deals 2x magic(low) damage after action.
+			}
+	-shadowform
+		4 MP
+		target self
+		applies buff
+			shadowform: {
+				duration: 3
+				all abilities MP cost is reduced by 1.
+				all status applications are increased by 1.
+				curse debuff now deals [4x magic(low)].
+			}
+	-shadowklock
+		1 MP
+		target 1
+		applies SHADOWLOCK 1
+	-shadowblast
+		require: target with SHADOWLOCK
+		4 MP
+		target 1
+		2x magic(mid)
+		increases target's SHADOWLOCK by 1
+	-shadowsteal
+		require: target with SHADOWLOCK 7+
+		10 MP
+		target 1
+		applies DEATH 1
+		restores caster's MP by 15 if target dies this turn
+	-vanish
+		10 MP
+		target self
+		applies buff
+			vanish: {
+				duration: 1
+				next ability targeting the Shadowmancer is canceled.
+				any entity that targets the Shadowmancer receive 2x magic(mid).
+			}
+	-silence
+		4 MP
+		target 1
+		applies SILENCE 2
+	-fever
+		6 MP
+		target 1
+		applies debuff
+			fever: {
+				duration: 3
+				increase CHILL by 1 after action.
+			}
+	-vulnerability
+		8 MP
+		target 1
+		applies debuff
+			vulnerable:	{
+				duration: 3
+				all vulnerability: low
+			}
+	-oblivion
+		5 MP
+		target 1
+		applies CONFUSION 2
+	
+talents:
+	-curse becomes [target 2]
+	-curse debuff becomes [duration: 5]
+	-shadowform buff becomes [duration: 5]
+	-shadowform also gives slash, bash, pierce resistance: low
+	-shadowlock becomes [target 2]
+	-shadowlock gets 2x magic(mid) 
+	-shadowblast gets 1x magic(high)
+	-shadowblast becomes [increases target's SHADOWLOCK by 2]
+	-shadowsteal becomes [require: target with SHADOWLOCK 5+]
+	-vanish buff becomes [next three abilities targeting the Shadowmancer are canceled.]
+	-vanish buff becomes [any entity that targets the Shadowmancer receive 4x magic(mid).]
+	-silence becomes [applies SILENCE 4]
+	-silence becomes [target line]
+	-fever becomes [target 2]
+	-fever debuff gets [increase SILENCE by 1 after action.]
+	-vulnerability becomes [target line]
+	-vulnerability debuff becomes [all vulnerability: mid]
+	-oblivion becomes [target line]
+	-oblivion becomes [applies CONFUSION 4]
+	-all abilities targeting an opponent with a status get 1x magic(mid)
+	-all abilities that applies a debuff also applies CHILL 1
+	-all abilities that applies a debuff also applies TAUNT 1
+	-every time the Shadowmancer applies a status, restore 2 MP
+	-every time the Shadowmancer applies a debuff, restore 1 MP to the whole party

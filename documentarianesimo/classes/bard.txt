@@ -1,0 +1,124 @@
+weapon:
+	-sword (light)
+	-mace (light)
+	-bow (light)
+
+armor:
+	-light
+
+jewels:
+	-instrument x1
+	-utility x1
+	-augment x1
+	
+stats:
+	HP: 12 + 4
+	MP: 20 + 7
+	attack: 2 + 0.3
+	speed: 6 + 0.3
+
+abilities:
+	-inspiring song
+		require: instrument
+		8 MP
+		target line ally
+		applies buff
+			inspiration: {
+				duration: 2
+				all attacks and abilities get [improve worst]
+			}
+	-refreshing song
+		require: instrument
+		8 MP
+		target line ally
+		applies buff
+			refresh: {
+				duration: 2
+				at the end of the turn, recover 1x heal(low), 1x mana(low)
+			}
+	-warding song
+		require: instrument
+		8 MP
+		target line ally
+		applies buff
+			ward: {
+				duration: 2
+				when targeted by an ability or attack, that ability gets [nerf best]
+			}
+	-outrageous song
+		require: instrument
+		8 MP
+		target line
+		applies debuff
+			outraged: {
+				duration: 2
+				all attacks and abilities get [nerf worst]
+			}
+	-soothing song
+		require: instrument
+		8 MP
+		target line
+		applies debuff
+			drowsy: {
+				duration: 2
+				at the end of the turn, applies SLEEP 1
+			}
+	-hurting song
+		require: instrument
+		8 MP
+		target line
+		applies debuff
+			hurting sound: {
+				duration: 2
+				at the end of the turn, deals 1x magic(mid)
+			}
+	-skirmish
+		5 MP
+		target 1
+		weapon's dice
+		applies debuff
+			skirmish: {
+				duration: 1
+				when targeted by an ability rolling weapon(), that ability gets [improve worst]
+			}
+	-finale
+		require: instrument, target with 3 debuffs, single use
+		22 MP
+		target 1
+		weapon's dice
+		applies DEATH 3
+		remove all debuffs
+	-monster lore
+		navigation
+		5 MP
+		reveal a random unknown monster from the current dungeon's list
+	-dungeon lore
+		navigation
+		5 MP
+		reveal all squares in a 5 square radius
+		
+talents:
+	-at the end of the turn, all allies recover 1x heal(low)
+	-at the end of the turn, all allies recover 1x mana(low)
+	-all buffs applied by the Bard will have duration increased by 1
+	-all debuff applied by the Bard will have duration increased by 1
+	-cast a random song when battle begins
+	-all abilities and attacks targeting an opponent with 3 debuffs get 1x magic(mid)
+	-all abilities targeting an ally with 3 buffs get 1x heal(low)
+	-get resistance: almighty(low)
+	-get immunity: SILENCE
+	-outrageous song becomes [target all]
+	-outraged debuff becomes [duration: 4] 
+	-soothing song becomes [target all]
+	-drowsy debuff becomes [duration: 4] 
+	-hurting song becomes [target all]
+	-hurting sound debuff becomes [duration: 4] 
+	-skirmish debuff becomes [duration: 2] 
+	-skirmish becomes [2 MP]
+	-finale will now apply DEATH 5
+	-finale gets 2x almighty(high)
+	-finale becomes [14 MP]
+	-finale becomes [require: instrument, target with 2 debuffs]
+	-finale will now remove 1 random debuff only
+	-monster lore will also analyse the monster
+	-dungeon lore will now reveal in a 8 square radius

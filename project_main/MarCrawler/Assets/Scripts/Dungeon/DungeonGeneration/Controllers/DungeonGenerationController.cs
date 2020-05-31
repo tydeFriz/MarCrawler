@@ -6,7 +6,7 @@ public class DungeonGenerationController {
 	
 	public Dungeon generateDungeon(Random rand, int seed){
 
-		//LATER_PATCH: scegli tipo di dungeon
+		//LATER_PATCH: pick dungeon type
 
 		//scegli layout
 		DungeonLayout layout = DungeonDispatcher.getDungeonLayoutById((rand.Next() % Constants.LAYOUTS_COUNT)+1);
@@ -47,7 +47,7 @@ public class DungeonGenerationController {
 				antiChances -= Constants.TREASURE_SPAWN_INCREMENTAL;
 		}
 
-		//LATER_PATCH: inserisci trappole
+		//LATER_PATCH: add traps
 
 		return (new Dungeon(layout.grid, rooms, treasures, seed/*LATER_PATCH: , traps*/));
 

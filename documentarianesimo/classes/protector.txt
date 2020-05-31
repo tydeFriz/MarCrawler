@@ -1,0 +1,106 @@
+weapon:
+	-blade(mid, heavy)
+	-mace(mid, heavy)
+	-lance(heavy)
+	-shield(all)
+
+armor:
+	-heavy
+
+jewels:
+	-defense x2
+	-utility x1
+	
+stats:
+	HP: 25 + 8
+	MP: 10 + 4
+	attack: 1 + 0.2
+	speed: 2 + 0.2
+
+abilities:
+	-protect
+		4 MP
+		target 1 ally
+		priority +3
+		redirect all abilities and attacks targeting target to the Protector
+	-wall
+		require: shield
+		12 MP
+		target line ally
+		priority +3
+		remove one random dice from all abilities and attacks targeting target allies
+	-provocation
+		3 MP
+		target 1
+		weapon's dice
+		applies TAUNT 2
+	-taunting scream
+		7 MP
+		target line
+		applies TAUNT 1
+	-shield push
+		require: shield
+		4 MP
+		target 1 front
+		2x bash(low)
+		moves target to back row. If the row is full, gets 2x bash(high) instead
+	-shield slam
+		require: shield
+		N MP
+		target 1
+		Nx bash(low)
+		N is the level of the equipped shield
+	-trauma
+		require: mace
+		3 MP
+		target 1
+		weapon's dice
+		applies STUN 2
+	-unheart
+		require: lance
+		7 MP
+		target 1
+		weapon's dice
+		applies BLEED 2
+	-armor up
+		10 MP
+		target line ally
+		applies buff
+			armor up: {
+				duration: 3
+				get slash, bash, pierce resistance: mid
+			}
+	-tame elements
+		10 MP
+		target line ally
+		applies buff
+			tame elements: {
+				duration: 3
+				get fire, ice, thunder resistance: mid
+			}
+
+talents:
+	-get weapon, slash, bash, pierce resistance: low while a shield is equipped
+	-get magic, fire, ice, thunder resistance: low while a shield is equipped
+	-weapon gets 2x crit(low) while a lance is equipped
+	-weapon gets 1x bash(high) while a shield and a mace are equipped
+	-once per battle, if HP reach 0, HP become 5 + 2x Protector's level
+	-protect becomes [target 2 ally]
+	-protect gets 2x heal(low)
+	-wall becomes [target all ally]
+	-wall becomes [8 MP]
+	-provocation gets 1x weapon(mid) while a shield is equipped
+	-provocation now applies TAUNT 3
+	-taunting scream get 1x almighty(low)
+	-taunting scream becomes [target all]
+	-shield push gets 1x bash(high)
+	-shield slam now applies STUN 1
+	-shield slam N is increased by 2
+	-trauma now applies STUN 3
+	-trauma gets 2x crit(mid)
+	-unheart now applies BLEED 4
+	-unheart gets 1x crit(high)
+	-armor up buff becomes [duration: 4]
+	-armor up becomes [target all ally]
+	-tame elements buff becomes [duration: 4]
+	-tame elements becomes [target all ally]

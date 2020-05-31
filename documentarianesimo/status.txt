@@ -1,0 +1,77 @@
+every entity can have up to 3 stati # and 3 buffs and 3 debuffs
+at the end of every turn the effect is applied, then the X of the status is lowered by 1.
+if a status' X = 0, the status is removed
+some stati contrast each other:
+	for every point in the lower one, remove both that point and a point of the contrasted
+
+stati:
+
+	BLEED X [TODO]
+		receive damage based on X:
+			1: 
+			2: 
+			3: 
+			4: 
+			5: 
+
+	BURN X
+		receive damage based on X:
+			1: 1x fire(low)
+			2: 3x fire(low)
+			3: 3x fire(low), 2x fire(mid)
+			4: 4x fire(mid), 2x fire(high)
+			5: 2x fire(mid), 2x fire(high), 3x fire(best)
+		contrast: FREEZE
+
+	CHILL X
+		you cannot use basic attack or change position next turn
+
+	CONFUSION X
+		throw dice based on X:
+			1: 2x confusion(low)						#0-2
+			2: 2x confusion(low), 1x confusion(mid)		#0-4
+			3: 1x confusion(low), 2x confusion(mid)		#0-5
+			4: 2x confusion(mid), 1x confusion(high)	#1-6
+			5: 2x confusion(mid), 2x confusion(high)	#2-8
+		then apply effects based on total number:
+			1: remove weakest die from action next turn
+			2: remove 2 weakest dice from action next turn
+			3: one action target becomes a random entity next turn
+			4: one action target becomes a random ally next turn
+			5: all action targets become random entities next turn	
+			6: all action targets become random allies next turn
+			7+: take Xx almighty(best) damage
+
+	DEATH X
+		throw Xx death() dice, then remove DEATH.
+		if at least one d appears, HP become 0
+
+	DISARM X
+		remove the best X dice from weapon next turn
+		
+	FREEZE X
+		skip next turn
+		contrast: BURN
+		
+	MARKED X
+		must be the target of all enemies' attacks and abilities
+
+	SHADOWLOCK X
+		does not get lowered by turn check
+		
+	SHOCK X
+		receive Xx thunder(mid) damage and randomly change position
+
+	SILENCE X
+		cannot use abilities
+		
+	STUN X
+		cannot attack or use abilities next turn
+		
+	TAUNT X
+		can only target the entity that applied TAUNT next turn
+	
+	TRAP X
+		cannot escape
+		crits deal triple damage
+		speed becomes 0

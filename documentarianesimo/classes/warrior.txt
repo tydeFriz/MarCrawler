@@ -1,0 +1,105 @@
+weapon:
+	-blade (all)
+	-mace (all)
+	-lance (all)
+	-bow (light)
+	-shield (light, mid)
+
+armor:
+	-mid
+	-heavy
+
+jewels:
+	-offense x2
+	-defense x1
+	
+stats:
+	HP: 16 + 6
+	MP: 10 + 4
+	attack: 2 + 0.2
+	speed: 5 + 0.3
+
+abilities:
+	-slice
+		require: blade
+		3 MP
+		target 1
+		weapon's dice, 1x slash(high)
+	-bash
+		require: mace
+		3 MP
+		target 1
+		weapon's dice, 1x bash(high)
+	-impale
+		require: lance
+		3 MP
+		target 1
+		weapon's dice, 1x pierce(high)
+	-pierce
+		require: bow, targets on different lines
+		9 MP
+		target 2
+		weapon's dice, 1x weapon(low) 1x weapon(mid)
+	-mighty strike:
+		require: melee weapon
+		8 MP
+		target 1
+		weapon's dice, 2x almighty(mid)
+	-weapon throw
+		5 MP
+		target 1
+		1x weapon(mid)
+		applies STUN 1
+		warrior receive DISARM 2
+	-whirlwind
+		20 MP
+		target all
+		2x weapon(mid)
+	-multishot
+		require: bow
+		20 MP
+		target line
+		weapon's dice, 2x crit(low)
+	-revenge
+		require: received damage previous turn
+		2 MP
+		target 1
+		weapon's dice, 2x crit(low)
+	-disarm
+		require: melee weapon
+		4 MP
+		target 1
+		applies DISARM 2
+		1x weapon(low)
+	-shield bash
+		require: shield
+		3 MP
+		target 1
+		applies STUN 1
+		2x bash(mid)
+	
+talents:
+	-all abilities get 1x crit(mid)
+	-get 1x slash(mid) weapon dice while a blade is equipped
+	-attacks and abilities applies CONFUSION 2 while a mace is equipped 
+	-get 2x crit(low) weapon dice while a lance is equipped
+	-restore 2 MP every time an ability deals damage to an opponent
+	-slice gets 2x slice(low)
+	-slice becomes [target 2]
+	-bash gets 2x bash(low)
+	-bash becomes [1 MP]
+	-impale gets 2x pierce(low)
+	-impale gets 1x crit(high)
+	-pierce becomes [6 MP]
+	-mighty strike gets 2x weapon(high)
+	-mighty strike gets 2x crit(mid)
+	-weapon throw now throws weapon's dice
+	-weapon throw becomes [warrior receive DISARM 1]
+	-if your weapon has 2 or more dice, whirlwind gets strongest and weakest weapon's dice
+	-multishot becomes [15 MP]
+	-revenge becomes [target 2]
+	-revenge now applies TAUNT 1
+	-disarm now throws weapon's dice
+	-disarm now applies DISARM 4
+	-shield bash and disarm get 2x weapon(mid)
+	-shield bash now applies STUN 2
